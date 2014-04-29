@@ -28,14 +28,14 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
 #' passed to \code{\link{which}}
 #' @param ... Arguments to be passed to \code{\link{get.last.mode}}
 #' @export
-#' @keywords whitestripe, intensity normalization
 #' @return List of indices of whitestripe, last mode of histogram,
 #' mean of whitestripe, standard deviation of whitestripe
 #' @examples \dontrun{
 #'
 #'}
 whitestripe = function(img, breaks=2000, 
-                       whitestripe.width = 0.05, arr.ind= FALSE, ...){
+                       whitestripe.width = 0.05, 
+                       arr.ind= FALSE, ...){
   length.img = prod(dim(img))
   img.voi = make_img_voi(img)
   img.hist = hist(img.voi, 
@@ -96,5 +96,66 @@ whitestripe_norm = function(img, indices, ...){
   mu = mean(img[indices], ...)
   sig = sd(img[indices], ...)
   img = (img-mu)/sig
+  if (inherits(img, "nifti")){
+    img = cal_img(img)
+    img = zero_trans(img)
+  }
+  return(img)
+}
+
+
+
+
+#' @title Set Max/Min for nifti object
+#' @return object of type nifti
+#' @param img nifti object
+#' @description Rescales image @cal_max and @cal_min to be the max and min,
+#' removing NA's, of the image
+#' @name cal_img
+#' @export
+cal_img = function(img){
+  cmax = max(img, na.rm=TRUE) 
+  cmax = ifelse(is.finite(cmax), cmax, 0)
+  cmin = min(img, na.rm=TRUE) 
+  cmin = ifelse(is.finite(cmin), cmin, 0)  
+  img@cal_max = cmax
+  img@cal_min = cmin
+  img
+}
+
+#' @title Change intercept to 0 and slope to 1
+#' @return object of type nifti
+#' @param img nifti object (or character of filename)
+#' @description Forces image @scl_slope to 1 nad and @scl_inter to be 0
+#' @name zero_trans
+#' @export
+zero_trans = function(img){
+  img = check.nifti(img)
+  img@scl_slope = 1
+  img@scl_inter = 0
+  return(img)
+}
+
+
+#' @title Check if nifti image or read in
+#' @import oro.nifti
+#' @description Simple check to see if input is character or of class nifti
+#' @return nifti object
+#' @seealso \link{readNIfTI}
+#' @param x character path of image or 
+#' an object of class nifti
+#' @param reorient (logical) passed to \code{\link{readNIfTI}} if the image
+#' is to be re-oriented
+#' @export
+check.nifti = function(x, reorient=FALSE){
+  if (inherits(x, "character")) {
+    img = readNIfTI(x, reorient=reorient)
+  } else {
+    if (inherits(x, "nifti")){
+      img = x
+    } else {
+      stop("x has unknown class - not char or nifti")
+    }
+  }
   return(img)
 }

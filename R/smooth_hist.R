@@ -10,10 +10,9 @@
 #' @param method Method for smoothing for GAM
 #' @param ... Arguments passed to \code{\link[mgcv::gam]{gam}}
 #' @export
-#' @keywords
 #' @seealso gam
-#' @return
-#' @alias
+#' @return List of objects: x and y coordinates of histogram, coefficients from GAM, 
+#' fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials
 #' @examples \dontrun{
 #'
 #'}
@@ -59,8 +58,6 @@ smooth.hist = function(x, y,
 #' @param deg Degree of polynomials
 #' @param deriv.deg <what param does>
 #' @export
-#' @keywords
-#' @seealso
 #' @return Derivative of smoothed histogram
 #' @examples \dontrun{
 #'

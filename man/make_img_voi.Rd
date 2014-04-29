@@ -1,0 +1,27 @@
+\name{make_img_voi}
+\alias{make_img_voi}
+\title{Make Image VOI}
+\usage{
+make_img_voi(img, slices = 80:120, na.rm = TRUE)
+}
+\arguments{
+  \item{img}{Image (T1 usually or T2).  Array or object of
+  class nifti}
+
+  \item{slices}{Slices to take for the image voi}
+
+  \item{na.rm}{Remove NAs from mean.  This is for double
+  checking}
+}
+\value{
+VOI of image.
+}
+\description{
+Creates a VOI of Image for the specified slices
+}
+\examples{
+\dontrun{
+
+}
+}
+

@@ -8,9 +8,9 @@ Maintainer: Taki Shinohara <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Depends:
-	AnalyzeFMRI,
-	RColorBrewer,
-	R.utils,
-	oro.nifti,
-	SemiPar, 
-	mgcv
+    AnalyzeFMRI,
+    RColorBrewer,
+    R.utils,
+    oro.nifti,
+    SemiPar,
+    mgcv

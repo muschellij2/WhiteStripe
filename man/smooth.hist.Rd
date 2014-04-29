@@ -1,0 +1,39 @@
+\name{smooth.hist}
+\alias{smooth.hist}
+\title{Histogram smoothing for whitestripe}
+\usage{
+smooth.hist(x, y, deg = 4, k = floor(min(250, length(x)/2)),
+  method = "REML", ...)
+}
+\arguments{
+  \item{x}{values of midpoints from \code{\link{hist}}}
+
+  \item{y}{values of counts from \code{\link{hist}}}
+
+  \item{deg}{degree of polynomials used}
+
+  \item{k}{Number of knots}
+
+  \item{method}{Method for smoothing for GAM}
+
+  \item{...}{Arguments passed to
+  \code{\link[mgcv::gam]{gam}}}
+}
+\value{
+List of objects: x and y coordinates of histogram,
+coefficients from GAM, fitted values from GAM, the GAM
+model, the knots fittted, and degrees of polynomials
+}
+\description{
+Uses a generalized additive model (GAM) to smooth a
+historgram for whitestripe
+}
+\examples{
+\dontrun{
+
+}
+}
+\seealso{
+gam
+}
+

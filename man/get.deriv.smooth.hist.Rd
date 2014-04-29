@@ -1,0 +1,30 @@
+\name{get.deriv.smooth.hist}
+\alias{get.deriv.smooth.hist}
+\title{Gets $n^{th}$ derivative of smoothed histogram}
+\usage{
+get.deriv.smooth.hist(x, coefs, knots, deg = 4, deriv.deg = 1)
+}
+\arguments{
+  \item{x}{values from smooth.hist}
+
+  \item{coefs}{Coefficients from GAM from smooth.hist}
+
+  \item{knots}{Number of knots fit for GAM}
+
+  \item{deg}{Degree of polynomials}
+
+  \item{deriv.deg}{<what param does>}
+}
+\value{
+Derivative of smoothed histogram
+}
+\description{
+This function outputs the nth derivative of a histogram
+smooth.
+}
+\examples{
+\dontrun{
+
+}
+}
+
