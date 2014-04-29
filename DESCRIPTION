@@ -1,0 +1,16 @@
+Package: WhiteStripe
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2014-04-28
+Author: Taki Shinohara
+Maintainer: Taki Shinohara <yourfault@somewhere.net>
+Description: More about what it does (maybe more than one line)
+License: What license is it under?
+Depends:
+	AnalyzeFMRI,
+	RColorBrewer,
+	R.utils,
+	oro.nifti,
+	SemiPar, 
+	mgcv
