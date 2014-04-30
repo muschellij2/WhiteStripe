@@ -1,9 +1,9 @@
 Package: WhiteStripe
 Type: Package
-Title: This package implements the WhiteStripe white matter normaliztaion
+Title: This package implements the WhiteStripe white matter normalization
 Version: 1.0
 Date: 2014-04-28
-Author: Taki Shinohara
+Author: Taki Shinohara, John Muschelli
 Maintainer: Taki Shinohara <rshi@mail.med.upenn.edu>
 Description: For intensity-based normalization of T1 and T2 images, we have
     found that using normal appearing white matter performs well.  This method

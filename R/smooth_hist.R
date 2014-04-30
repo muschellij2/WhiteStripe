@@ -1,7 +1,7 @@
 #' @title Histogram smoothing for whitestripe
 #'
 #' @description Uses a generalized additive model (GAM) to smooth a 
-#' historgram for whitestripe
+#' histogram for whitestripe
 #' @param x values of midpoints from \code{\link{hist}}
 #' @param y values of counts from \code{\link{hist}}
 #' @param deg degree of polynomials used
@@ -13,7 +13,6 @@
 #' @import mgcv 
 #' @return List of objects: x and y coordinates of histogram, coefficients from GAM, 
 #' fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials
-#' @aliases smooth.hist
 #' @examples 
 #' data(t2.voi)
 #' img.hist = hist(t2.voi, 

@@ -1,5 +1,4 @@
 \name{smooth_hist}
-\alias{smooth.hist}
 \alias{smooth_hist}
 \title{Histogram smoothing for whitestripe}
 \usage{
@@ -26,7 +25,7 @@ model, the knots fittted, and degrees of polynomials
 }
 \description{
 Uses a generalized additive model (GAM) to smooth a
-historgram for whitestripe
+histogram for whitestripe
 }
 \examples{
 data(t2.voi)
