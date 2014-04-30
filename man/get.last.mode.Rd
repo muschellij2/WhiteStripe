@@ -2,7 +2,7 @@
 \alias{get.last.mode}
 \title{Get Last Peak}
 \usage{
-get.last.mode(x, y, rare.prop = 1/5, ...)
+get.last.mode(x, y, rare.prop = 1/5, verbose = TRUE, ...)
 }
 \arguments{
   \item{x}{values of midpoints from \code{\link{hist}}}
@@ -11,6 +11,8 @@ get.last.mode(x, y, rare.prop = 1/5, ...)
 
   \item{rare.prop}{Proportion used to remove rare intensity
   tail}
+
+  \item{verbose}{print diagnostic output}
 
   \item{...}{arguments to be passed to
   \code{\link{smooth_hist}}}
@@ -22,8 +24,19 @@ Value of x that is the last peak
 This function grabs the last peak or shoulder.
 }
 \examples{
-\dontrun{
-
-}
+data(t1.voi)
+system.time({
+img.hist = hist(t1.voi,
+breaks=2000,
+plot=FALSE)
+y = img.hist$counts
+x = img.hist$mids
+x = x[!is.na(y)];
+y = y[!is.na(y)]
+# 20 used for speed of example
+nawm_peak = get.last.mode(x, y, k=20)
+hist(t1.voi, breaks=2000, border="red")
+abline(v=nawm_peak)
+})
 }
 

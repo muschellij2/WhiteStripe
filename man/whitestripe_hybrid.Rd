@@ -20,8 +20,8 @@ two masks for a hybrid approach
 }
 \examples{
 \dontrun{
-t1 = readNIfTI("~/Dropbox/Packages/WhiteStripe/VolumetricT1Strip.nii.gz")
-t2 = readNIfTI("~/Dropbox/Packages/WhiteStripe/T2Strip.nii.gz")
+t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
 ind = whitestripe_hybrid(t1, t2)
 }
 }

@@ -6,9 +6,6 @@
 #' @param na.rm Remove NAs from mean.  This is for double checking
 #' @export
 #' @return VOI of image.
-#' @examples \dontrun{
-#'
-#'}
 make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
   img.voi = img[,,slices]  
   mn = mean(img, na.rm=na.rm)
@@ -32,9 +29,6 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
 #' @export
 #' @return List of indices of whitestripe, last mode of histogram,
 #' mean of whitestripe, standard deviation of whitestripe
-#' @examples \dontrun{
-#'
-#'}
 whitestripe = function(img, type=c("T1", "T2"), breaks=2000, 
                        whitestripe.width = 0.05, 
                        arr.ind= FALSE, verbose = TRUE, ...){
@@ -112,9 +106,6 @@ whitestripe = function(img, type=c("T1", "T2"), breaks=2000,
 #' @param ... arguments to be passed to \code{\link{mean}} and \code{\link{sd}}
 #' @export
 #' @return Object of same class as img, but normalized
-#' @examples \dontrun{
-#'
-#'}
 whitestripe_norm = function(img, indices, ...){
   mu = mean(img[indices], ...)
   sig = sd(img[indices], ...)
@@ -140,8 +131,8 @@ whitestripe_norm = function(img, indices, ...){
 #' @alias hybrid
 #' @examples 
 #' \dontrun{
-#' t1 = readNIfTI("~/Dropbox/Packages/WhiteStripe/VolumetricT1Strip.nii.gz")
-#' t2 = readNIfTI("~/Dropbox/Packages/WhiteStripe/T2Strip.nii.gz")
+#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
 #' ind = whitestripe_hybrid(t1, t2)
 #'}
 whitestripe_hybrid = function(t1, t2, ...){
@@ -167,6 +158,14 @@ whitestripe_hybrid = function(t1, t2, ...){
 #' @seealso whitestripe, whitestripe_hybrid
 #' @return Class of array or nifti depending on img input
 #' @alias whitemask
+#' @examples 
+#' \dontrun{
+#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
+#' ind = whitestripe_hybrid(t1, t2)
+#' mask = whitestripe_ind_to_mask(t1, ind$whitestripe.ind)
+#' orthographic(mask)
+#' } 
 whitestripe_ind_to_mask = function(img, indices, writeimg=FALSE, ...){
   img[!is.na(img) | is.na(img)] = FALSE
   img[indices] = TRUE

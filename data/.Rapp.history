@@ -1,0 +1,5 @@
+load("/Users/johnmuschelli/Dropbox/Packages/WhiteStripe/data/t2.voi.rda")
+ls()
+load("/Users/johnmuschelli/Dropbox/Packages/WhiteStripe/data/t1.voi.rda")
+ls()
+q('no')

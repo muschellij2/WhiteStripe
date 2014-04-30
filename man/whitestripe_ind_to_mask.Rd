@@ -21,6 +21,15 @@ Class of array or nifti depending on img input
 \description{
 Uses WhiteStripe indices to create image mask
 }
+\examples{
+\dontrun{
+t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
+ind = whitestripe_hybrid(t1, t2)
+mask = whitestripe_ind_to_mask(t1, ind$whitestripe.ind)
+orthographic(mask)
+}
+}
 \seealso{
 whitestripe, whitestripe_hybrid
 }

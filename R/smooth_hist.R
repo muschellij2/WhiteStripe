@@ -1,4 +1,3 @@
-
 #' @title Histogram smoothing for whitestripe
 #'
 #' @description Uses a generalized additive model (GAM) to smooth a 
@@ -15,9 +14,17 @@
 #' @return List of objects: x and y coordinates of histogram, coefficients from GAM, 
 #' fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials
 #' @aliases smooth.hist
-#' @examples \dontrun{
-#'
-#'}
+#' @examples 
+#' data(t2.voi)
+#' img.hist = hist(t2.voi, 
+#' breaks=2000, 
+#' plot=FALSE)
+#' y = img.hist$counts
+#' x = img.hist$mids
+#' x = x[!is.na(y)];
+#' y = y[!is.na(y)]
+#' # 70 used for speed of example
+#' s.hist = smooth_hist(x, y, k=70)
 smooth_hist = function(x, y, 
                        deg = 4, 
                        k = floor(min(250,length(x)/2)), 
@@ -61,9 +68,13 @@ smooth_hist = function(x, y,
 #' @param deriv.deg <what param does>
 #' @export
 #' @return Derivative of smoothed histogram
-#' @examples \dontrun{
-#'
-#'}
+#' @examples 
+#' data(smoothed_histogram)
+#' dy<-get.deriv.smooth.hist(xvals, 
+#' coefs=s.hist$coefs,
+#' knots=s.hist$knots,
+#' deg=s.hist$deg,
+#' deriv.deg=1)
 get.deriv.smooth.hist <- function(x,
                                   coefs,
                                   knots,
@@ -77,7 +88,7 @@ get.deriv.smooth.hist <- function(x,
     sapply(knots, function(k) ((x - k > 0) * (x - k)^(deg-1)))
   )
   if (deriv.deg>1) {
-    return(get.deriv.smooth_hist(x,coefs=deriv.coefs,deg=deg-1,knots=knots,deriv.deg=deriv.deg-1))
+    return(get.deriv.smooth.hist(x,coefs=deriv.coefs,deg=deg-1,knots=knots,deriv.deg=deriv.deg-1))
   } else {
     return(cbind(deriv.phi)%*%deriv.coefs)
   }

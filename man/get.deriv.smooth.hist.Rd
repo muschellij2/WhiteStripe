@@ -23,8 +23,11 @@ This function outputs the nth derivative of a histogram
 smooth.
 }
 \examples{
-\dontrun{
-
-}
+data(smoothed_histogram)
+dy<-get.deriv.smooth.hist(xvals,
+coefs=s.hist$coefs,
+knots=s.hist$knots,
+deg=s.hist$deg,
+deriv.deg=1)
 }
 

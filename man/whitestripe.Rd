@@ -32,9 +32,4 @@ mean of whitestripe, standard deviation of whitestripe
 Returns the mean/sd of the whitestripe and indices for them
 on the image
 }
-\examples{
-\dontrun{
-
-}
-}
 

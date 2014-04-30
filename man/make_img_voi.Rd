@@ -19,9 +19,4 @@ VOI of image.
 \description{
 Creates a VOI of Image for the specified slices
 }
-\examples{
-\dontrun{
-
-}
-}
 
