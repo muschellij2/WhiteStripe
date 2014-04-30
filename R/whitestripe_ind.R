@@ -29,6 +29,19 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
 #' @export
 #' @return List of indices of whitestripe, last mode of histogram,
 #' mean of whitestripe, standard deviation of whitestripe
+#' @examples 
+#' \dontrun{
+#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+#' t1.ind = whitestripe(t1, "T1")
+#' t1.mask = whitestripe_ind_to_mask(t1, t1.ind$whitestripe.ind)
+#' t1.mask[t1.mask == 0] = NA
+#' orthographic(t1, t1.mask, col.y="red") 
+#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
+#' t2.ind = whitestripe(t2, "T2") 
+#' t2.mask = whitestripe_ind_to_mask(t2, t2.ind$whitestripe.ind)
+#' t2.mask[t2.mask == 0] = NA
+#' orthographic(t2, t2.mask, col.y="red")  
+#'}
 whitestripe = function(img, type=c("T1", "T2"), breaks=2000, 
                        whitestripe.width = 0.05, 
                        arr.ind= FALSE, verbose = TRUE, ...){
