@@ -12,7 +12,8 @@ whitestripe_hybrid(t1, t2, ...)
   \item{...}{arguments passed to \code{\link{whitestripe}}}
 }
 \value{
-List of indices of overlap mask
+List of indices of overlap mask, and overlap of class array
+or nifti
 }
 \description{
 Uses t1 and t2 WhiteStripe to get an intersection of the

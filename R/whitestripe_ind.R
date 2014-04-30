@@ -150,7 +150,7 @@ whitestripe_norm = function(img, indices, ...){
 #' @export
 #' @keywords hybrid, whitestripe
 #' @seealso whitestripe
-#' @return List of indices of overlap mask
+#' @return List of indices of overlap mask, and overlap of class array or nifti
 #' @alias hybrid
 #' @examples 
 #' \dontrun{
@@ -163,8 +163,16 @@ whitestripe_hybrid = function(t1, t2, ...){
   t2.ws = whitestripe(t2, type="T2", ...)
   whitestripe.ind = intersect(t1.ws$whitestripe.ind, 
     t2.ws$whitestripe.ind)
+  mask.img = t1
+  mask.img[!is.na(mask.img) | is.na(mask.img)] = 0
+  mask.img[whitestripe.ind] = 1  
+  if (inherits(t1, "nifti")){
+    mask.img = cal_img(mask.img)
+    mask.img = zero_trans(mask.img)
+  }    
   return(list(
-    whitestripe.ind= whitestripe.ind
+    whitestripe.ind= whitestripe.ind,
+    mask.img = mask.img
   ))
 }
 
