@@ -1,0 +1,29 @@
+\name{whitestripe_ind_to_mask}
+\alias{whitestripe_ind_to_mask}
+\title{WhiteStripe Indices to Mask}
+\usage{
+whitestripe_ind_to_mask(img, indices, writeimg = FALSE, ...)
+}
+\arguments{
+  \item{img}{Array or class nifti that is corresponds to
+  dimensions of the images the indices were generated from}
+
+  \item{indices}{indices from \code{\link{whitestripe}}}
+
+  \item{writeimg}{logical to write image or not}
+
+  \item{...}{arguments to passed to
+  \code{\link{writeNIfTI}} for writing image}
+}
+\value{
+Class of array or nifti depending on img input
+}
+\description{
+Uses WhiteStripe indices to create image mask
+}
+\seealso{
+whitestripe, whitestripe_hybrid
+}
+\keyword{hybrid,}
+\keyword{whitestripe}
+

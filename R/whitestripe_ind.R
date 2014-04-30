@@ -17,15 +17,17 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
 }
 
 
-#' @title Performs White Stripe of  Images
+#' @title Performs White Stripe of T1 or T2 Images
 #'
 #' @description Returns the mean/sd of the whitestripe and indices
 #' for them on the image 
-#' @param img Image (T1 usually or T2).  Array or object of class nifti 
+#' @param img Image (T1 or T2).  Array or object of class nifti 
+#' @param type T1 or T2 image whitestripe
 #' @param breaks Number of breaks passed to \code{\link{hist}}
 #' @param whitestripe.width Radius of the white stripe
 #' @param arr.ind Whether indices should be array notation or not, 
 #' passed to \code{\link{which}}
+#' @param verbose Print diagnostic information
 #' @param ... Arguments to be passed to \code{\link{get.last.mode}}
 #' @export
 #' @return List of indices of whitestripe, last mode of histogram,
@@ -33,11 +35,17 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
 #' @examples \dontrun{
 #'
 #'}
-whitestripe = function(img, breaks=2000, 
+whitestripe = function(img, type=c("T1", "T2"), breaks=2000, 
                        whitestripe.width = 0.05, 
-                       arr.ind= FALSE, ...){
+                       arr.ind= FALSE, verbose = TRUE, ...){
   length.img = prod(dim(img))
+  if (verbose){
+    cat(paste0("Making ", type, " Image VOI\n"))
+  }
   img.voi = make_img_voi(img)
+  if (verbose){
+    cat(paste0("Making ", type, " Histogram\n"))
+  }
   img.hist = hist(img.voi, 
                   breaks=breaks, 
                   plot=FALSE)
@@ -46,12 +54,25 @@ whitestripe = function(img, breaks=2000,
   x.in = x.in[!is.na(y.in)];
   y.in = y.in[!is.na(y.in)]
   
-  img.last.mode = get.last.mode(x.in, y.in, ...)
-  img.last.mode.q = mean(img.voi < img.last.mode)
+  stopifnot(length(type) == 1)
+  type = match.arg(type)
+  if (verbose){
+    cat(paste0("Getting ", type, " Modes\n"))
+  }  
+  if (type == "T1") {
+    img.mode = get.last.mode(x.in, y.in, ...)
+  }
+  if (type == "T2"){
+    img.mode = get.largest.mode(x.in, y.in, ...) 
+  }
+  img.mode.q = mean(img.voi < img.mode)
+  if (verbose){
+    cat("Quantile VOI\n")
+  }    
   whitestripe = quantile(img.voi,
                          probs=c(
-                           max(img.last.mode.q - whitestripe.width,0),
-                           min(img.last.mode.q + whitestripe.width,1)
+                           max(img.mode.q - whitestripe.width,0),
+                           min(img.mode.q + whitestripe.width,1)
                          )
   )
   whitestripe.ind = which(
@@ -60,24 +81,26 @@ whitestripe = function(img, breaks=2000,
   )
   err = FALSE
   if (length(whitestripe.ind)==0) {
-    warning("Length of White Stripe is 0, doing whole brain")
+    warning(paste0("Length of White Stripe is 0 for ", type, ", doing whole brain"))
     whitestripe.ind = 1:length.img 
     err = TRUE
   }
   #ERROR IN WHITE STRIPE MEANS DO WHOLE-IMAGE NORMALIZATION
   
-  mu.whitestripe = img.last.mode
+  mu.whitestripe = img.mode
   sig.whitestripe = sd(img[whitestripe.ind])
   #   
   #     img.whitestripe.norm = (img-mu.whitestripe)/sig.whitestripe
   #       
   return( list(
     whitestripe.ind = whitestripe.ind, 
-    img.last.mode = img.last.mode, 
+    img.mode = img.mode, 
     mu.whitestripe = mu.whitestripe,
     sig.whitestripe = sig.whitestripe,
     err = err  ))
 }
+
+
 
 
 #' @title Normalize Image using white stripe
@@ -103,6 +126,61 @@ whitestripe_norm = function(img, indices, ...){
   return(img)
 }
 
+#' @title Hybrid WhiteStripe
+#'
+#' @description Uses t1 and t2 WhiteStripe to get an intersection of 
+#' the two masks for a hybrid approach
+#' @param t1 T1 image, array or class nifti
+#' @param t2 T2 image, array or class nifti
+#' @param ... arguments passed to \code{\link{whitestripe}}
+#' @export
+#' @keywords hybrid, whitestripe
+#' @seealso whitestripe
+#' @return List of indices of overlap mask
+#' @alias hybrid
+#' @examples 
+#' t1 = readNIfTI("~/Dropbox/Packages/WhiteStripe/VolumetricT1Strip.nii.gz")
+#' t2 = readNIfTI("~/Dropbox/Packages/WhiteStripe/T2Strip.nii.gz")
+#' ind = whitestripe_hybrid(t1, t2)
+#' \dontrun{
+#'
+#'}
+whitestripe_hybrid = function(t1, t2, ...){
+  t1.ws = whitestripe(t1, type="T1", ...)
+  t2.ws = whitestripe(t2, type="T2", ...)
+  whitestripe.ind = intersect(t1.ws$whitestripe.ind, 
+    t2.ws$whitestripe.ind)
+  return(list(
+    whitestripe.ind= whitestripe.ind
+  ))
+}
+
+#' @title WhiteStripe Indices to Mask
+#'
+#' @description Uses WhiteStripe indices to create image mask
+#' @param img Array or class nifti that is corresponds to dimensions of the images the 
+#' indices were generated from
+#' @param indices indices from \code{\link{whitestripe}}
+#' @param writeimg logical to write image or not
+#' @param ... arguments to passed to \code{\link{writeNIfTI}} for writing image
+#' @export
+#' @keywords hybrid, whitestripe
+#' @seealso whitestripe, whitestripe_hybrid
+#' @return Class of array or nifti depending on img input
+#' @alias whitemask
+whitestripe_ind_to_mask = function(img, indices, writeimg=FALSE, ...){
+  img[!is.na(img) | is.na(img)] = FALSE
+  img[indices] = TRUE
+  if (inherits(img, "nifti")){
+    img = cal_img(img)
+    img = zero_trans(img)
+    if (writeimg){
+      writeNIfTI(nim=img, ...)
+    }
+  } 
+  
+  return(img)
+}
 
 
 

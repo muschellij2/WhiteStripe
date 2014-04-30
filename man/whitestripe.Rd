@@ -1,13 +1,15 @@
 \name{whitestripe}
 \alias{whitestripe}
-\title{Performs White Stripe of  Images}
+\title{Performs White Stripe of T1 or T2 Images}
 \usage{
-whitestripe(img, breaks = 2000, whitestripe.width = 0.05, arr.ind = FALSE,
-  ...)
+whitestripe(img, type = c("T1", "T2"), breaks = 2000,
+  whitestripe.width = 0.05, arr.ind = FALSE, verbose = TRUE, ...)
 }
 \arguments{
-  \item{img}{Image (T1 usually or T2).  Array or object of
-  class nifti}
+  \item{img}{Image (T1 or T2).  Array or object of class
+  nifti}
+
+  \item{type}{T1 or T2 image whitestripe}
 
   \item{breaks}{Number of breaks passed to
   \code{\link{hist}}}
@@ -16,6 +18,8 @@ whitestripe(img, breaks = 2000, whitestripe.width = 0.05, arr.ind = FALSE,
 
   \item{arr.ind}{Whether indices should be array notation
   or not, passed to \code{\link{which}}}
+
+  \item{verbose}{Print diagnostic information}
 
   \item{...}{Arguments to be passed to
   \code{\link{get.last.mode}}}

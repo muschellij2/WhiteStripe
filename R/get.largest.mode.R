@@ -20,7 +20,7 @@ get.largest.mode <- function(x, y,
   dy = get.deriv.smooth.hist(
     x,
     coefs=smooth1$coefs,
-    coefs=smooth1$knots,
+    knots=smooth1$knots,
     deg=smooth1$deg,
     deriv.deg=1)
   which.zero.crossing = which(
@@ -56,8 +56,8 @@ get.last.mode = function(x,y,
     smooth1 = smooth.hist(x, y, ...)
   })
   dy<-get.deriv.smooth.hist(x, 
-    smooth1$coefs,
-    smooth1$knots,
+    coefs=smooth1$coefs,
+    knots=smooth1$knots,
     deg=smooth1$deg,
     deriv.deg=1)
   which.zero.crossing<-which(
