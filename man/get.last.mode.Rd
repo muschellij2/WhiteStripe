@@ -13,7 +13,7 @@ get.last.mode(x, y, rare.prop = 1/5, ...)
   tail}
 
   \item{...}{arguments to be passed to
-  \code{\link{smoooth.hist}}}
+  \code{\link{smooth_hist}}}
 }
 \value{
 Value of x that is the last peak

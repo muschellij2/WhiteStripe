@@ -1,8 +1,8 @@
-\name{check.nifti}
-\alias{check.nifti}
+\name{check_nifti}
+\alias{check_nifti}
 \title{Check if nifti image or read in}
 \usage{
-\method{check}{nifti}(x, reorient = FALSE)
+check_nifti(x, reorient = FALSE)
 }
 \arguments{
   \item{x}{character path of image or an object of class

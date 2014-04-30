@@ -8,15 +8,17 @@
 #' @param deg degree of polynomials used
 #' @param k Number of knots
 #' @param method Method for smoothing for GAM
-#' @param ... Arguments passed to \code{\link[mgcv::gam]{gam}}
+#' @param ... Arguments passed to \code{\link{gam}}
 #' @export
 #' @seealso gam
+#' @import mgcv 
 #' @return List of objects: x and y coordinates of histogram, coefficients from GAM, 
 #' fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials
+#' @aliases smooth.hist
 #' @examples \dontrun{
 #'
 #'}
-smooth.hist = function(x, y, 
+smooth_hist = function(x, y, 
                        deg = 4, 
                        k = floor(min(250,length(x)/2)), 
                        method = "REML", ...){
@@ -52,8 +54,8 @@ smooth.hist = function(x, y,
 #' @title Gets $n^{th}$ derivative of smoothed histogram
 #'
 #' @description This function outputs the nth derivative of a histogram smooth.
-#' @param x values from smooth.hist
-#' @param coefs Coefficients from GAM from smooth.hist
+#' @param x values from smooth_hist
+#' @param coefs Coefficients from GAM from smooth_hist
 #' @param knots Number of knots fit for GAM
 #' @param deg Degree of polynomials
 #' @param deriv.deg <what param does>
@@ -75,7 +77,7 @@ get.deriv.smooth.hist <- function(x,
     sapply(knots, function(k) ((x - k > 0) * (x - k)^(deg-1)))
   )
   if (deriv.deg>1) {
-    return(get.deriv.smooth.hist(x,coefs=deriv.coefs,deg=deg-1,knots=knots,deriv.deg=deriv.deg-1))
+    return(get.deriv.smooth_hist(x,coefs=deriv.coefs,deg=deg-1,knots=knots,deriv.deg=deriv.deg-1))
   } else {
     return(cbind(deriv.phi)%*%deriv.coefs)
   }

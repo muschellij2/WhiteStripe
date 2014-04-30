@@ -139,11 +139,10 @@ whitestripe_norm = function(img, indices, ...){
 #' @return List of indices of overlap mask
 #' @alias hybrid
 #' @examples 
+#' \dontrun{
 #' t1 = readNIfTI("~/Dropbox/Packages/WhiteStripe/VolumetricT1Strip.nii.gz")
 #' t2 = readNIfTI("~/Dropbox/Packages/WhiteStripe/T2Strip.nii.gz")
 #' ind = whitestripe_hybrid(t1, t2)
-#' \dontrun{
-#'
 #'}
 whitestripe_hybrid = function(t1, t2, ...){
   t1.ws = whitestripe(t1, type="T1", ...)
@@ -206,9 +205,10 @@ cal_img = function(img){
 #' @param img nifti object (or character of filename)
 #' @description Forces image @scl_slope to 1 nad and @scl_inter to be 0
 #' @name zero_trans
+#' @import oro.nifti
 #' @export
 zero_trans = function(img){
-  img = check.nifti(img)
+  img = check_nifti(img)
   img@scl_slope = 1
   img@scl_inter = 0
   return(img)
@@ -224,8 +224,9 @@ zero_trans = function(img){
 #' an object of class nifti
 #' @param reorient (logical) passed to \code{\link{readNIfTI}} if the image
 #' is to be re-oriented
+#' @import oro.nifti
 #' @export
-check.nifti = function(x, reorient=FALSE){
+check_nifti = function(x, reorient=FALSE){
   if (inherits(x, "character")) {
     img = readNIfTI(x, reorient=reorient)
   } else {

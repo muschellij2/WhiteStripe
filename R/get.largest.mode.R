@@ -3,7 +3,7 @@
 #' @description This function grabs the largest peak of the histogram
 #' @param x values of midpoints from \code{\link{hist}}
 #' @param y values of counts from \code{\link{hist}}
-#' @param ... arguments to be passed to \code{\link{smoooth.hist}}
+#' @param ... arguments to be passed to \code{\link{smooth_hist}}
 #' @export
 #' @return Value of x that is the largest peak
 #' @examples \dontrun{
@@ -15,7 +15,7 @@ get.largest.mode <- function(x, y,
   #estimate derivative
   
   system.time({
-    smooth1 = smooth.hist(x, y, ...)
+    smooth1 = smooth_hist(x, y, ...)
   })
   dy = get.deriv.smooth.hist(
     x,
@@ -36,7 +36,7 @@ get.largest.mode <- function(x, y,
 #' @param x values of midpoints from \code{\link{hist}}
 #' @param y values of counts from \code{\link{hist}}
 #' @param rare.prop Proportion used to remove rare intensity tail
-#' @param ... arguments to be passed to \code{\link{smoooth.hist}}
+#' @param ... arguments to be passed to \code{\link{smooth_hist}}
 #' @export
 #' @return Value of x that is the last peak
 #' @examples \dontrun{
@@ -53,7 +53,7 @@ get.last.mode = function(x,y,
   
   #estimate derivative
   system.time({
-    smooth1 = smooth.hist(x, y, ...)
+    smooth1 = smooth_hist(x, y, ...)
   })
   dy<-get.deriv.smooth.hist(x, 
     coefs=smooth1$coefs,

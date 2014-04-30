@@ -5,9 +5,9 @@
 get.deriv.smooth.hist(x, coefs, knots, deg = 4, deriv.deg = 1)
 }
 \arguments{
-  \item{x}{values from smooth.hist}
+  \item{x}{values from smooth_hist}
 
-  \item{coefs}{Coefficients from GAM from smooth.hist}
+  \item{coefs}{Coefficients from GAM from smooth_hist}
 
   \item{knots}{Number of knots fit for GAM}
 

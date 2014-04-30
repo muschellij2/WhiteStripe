@@ -1,8 +1,9 @@
-\name{smooth.hist}
+\name{smooth_hist}
 \alias{smooth.hist}
+\alias{smooth_hist}
 \title{Histogram smoothing for whitestripe}
 \usage{
-smooth.hist(x, y, deg = 4, k = floor(min(250, length(x)/2)),
+smooth_hist(x, y, deg = 4, k = floor(min(250, length(x)/2)),
   method = "REML", ...)
 }
 \arguments{
@@ -16,8 +17,7 @@ smooth.hist(x, y, deg = 4, k = floor(min(250, length(x)/2)),
 
   \item{method}{Method for smoothing for GAM}
 
-  \item{...}{Arguments passed to
-  \code{\link[mgcv::gam]{gam}}}
+  \item{...}{Arguments passed to \code{\link{gam}}}
 }
 \value{
 List of objects: x and y coordinates of histogram,

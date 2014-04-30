@@ -19,11 +19,10 @@ Uses t1 and t2 WhiteStripe to get an intersection of the
 two masks for a hybrid approach
 }
 \examples{
+\dontrun{
 t1 = readNIfTI("~/Dropbox/Packages/WhiteStripe/VolumetricT1Strip.nii.gz")
 t2 = readNIfTI("~/Dropbox/Packages/WhiteStripe/T2Strip.nii.gz")
 ind = whitestripe_hybrid(t1, t2)
-\dontrun{
-
 }
 }
 \seealso{

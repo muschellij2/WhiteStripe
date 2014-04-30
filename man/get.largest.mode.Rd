@@ -10,7 +10,7 @@ get.largest.mode(x, y, ...)
   \item{y}{values of counts from \code{\link{hist}}}
 
   \item{...}{arguments to be passed to
-  \code{\link{smoooth.hist}}}
+  \code{\link{smooth_hist}}}
 }
 \value{
 Value of x that is the largest peak

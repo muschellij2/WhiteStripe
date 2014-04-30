@@ -1,16 +1,15 @@
 Package: WhiteStripe
 Type: Package
-Title: What the package does (short line)
+Title: This package implements the WhiteStripe white matter normaliztaion
 Version: 1.0
 Date: 2014-04-28
 Author: Taki Shinohara
-Maintainer: Taki Shinohara <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Maintainer: Taki Shinohara <rshi@mail.med.upenn.edu>
+Description: For intensity-based normalization of T1 and T2 images, we have
+    found that using normal appearing white matter performs well.  This method
+    performs white matter segmentation with only rigid-registration to the MNI
+    template and uses histogram-based methods.
+License: GPL-2
 Depends:
-    AnalyzeFMRI,
-    RColorBrewer,
-    R.utils,
     oro.nifti,
-    SemiPar,
     mgcv
