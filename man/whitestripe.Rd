@@ -32,4 +32,18 @@ mean of whitestripe, standard deviation of whitestripe
 Returns the mean/sd of the whitestripe and indices for them
 on the image
 }
+\examples{
+\dontrun{
+t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+t1.ind = whitestripe(t1, "T1")
+t1.mask = whitestripe_ind_to_mask(t1, t1.ind$whitestripe.ind)
+t1.mask[t1.mask == 0] = NA
+orthographic(t1, t1.mask, col.y="red")
+t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
+t2.ind = whitestripe(t2, "T2")
+t2.mask = whitestripe_ind_to_mask(t2, t2.ind$whitestripe.ind)
+t2.mask[t2.mask == 0] = NA
+orthographic(t2, t2.mask, col.y="red")
+}
+}
 
