@@ -26,7 +26,8 @@ whitestripe(img, type = c("T1", "T2"), breaks = 2000,
 }
 \value{
 List of indices of whitestripe, last mode of histogram,
-mean of whitestripe, standard deviation of whitestripe
+array/nifti of 0/1 corresponding to the mask, mean of
+whitestripe, standard deviation of whitestripe
 }
 \description{
 Returns the mean/sd of the whitestripe and indices for them

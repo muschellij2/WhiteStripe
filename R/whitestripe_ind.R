@@ -28,6 +28,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
 #' @param ... Arguments to be passed to \code{\link{get.last.mode}}
 #' @export
 #' @return List of indices of whitestripe, last mode of histogram,
+#' array/nifti of 0/1 corresponding to the mask,
 #' mean of whitestripe, standard deviation of whitestripe
 #' @examples 
 #' \dontrun{
@@ -98,10 +99,19 @@ whitestripe = function(img, type=c("T1", "T2"), breaks=2000,
   sig.whitestripe = sd(img[whitestripe.ind])
   #   
   #     img.whitestripe.norm = (img-mu.whitestripe)/sig.whitestripe
-  #       
+  #      
+  mask.img = img
+  mask.img[!is.na(mask.img) | is.na(mask.img)] = 0
+  mask.img[whitestripe.ind] = 1  
+  if (inherits(img, "nifti")){
+    mask.img = cal_img(mask.img)
+    mask.img = zero_trans(mask.img)
+  }  
+  
   return( list(
     whitestripe.ind = whitestripe.ind, 
     img.mode = img.mode, 
+    mask.img = mask.img,
     mu.whitestripe = mu.whitestripe,
     sig.whitestripe = sig.whitestripe,
     err = err  ))
