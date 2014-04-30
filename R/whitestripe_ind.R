@@ -219,6 +219,7 @@ whitestripe_ind_to_mask = function(img, indices, writeimg=FALSE, ...){
 #' @description Rescales image @cal_max and @cal_min to be the max and min,
 #' removing NA's, of the image
 #' @name cal_img
+#' @return Object of class nifti
 #' @export
 cal_img = function(img){
   cmax = max(img, na.rm=TRUE) 
@@ -227,7 +228,7 @@ cal_img = function(img){
   cmin = ifelse(is.finite(cmin), cmin, 0)  
   img@cal_max = cmax
   img@cal_min = cmin
-  img
+  return(img)
 }
 
 #' @title Change intercept to 0 and slope to 1

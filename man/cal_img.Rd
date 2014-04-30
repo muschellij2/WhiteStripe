@@ -9,6 +9,8 @@ cal_img(img)
 }
 \value{
 object of type nifti
+
+Object of class nifti
 }
 \description{
 Rescales image
