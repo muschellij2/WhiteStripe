@@ -90,7 +90,7 @@ whitestripe = function(img, type=c("T1", "T2"), breaks=2000,
   err = FALSE
   if (length(whitestripe.ind)==0) {
     warning(paste0("Length of White Stripe is 0 for ", type, ", doing whole brain"))
-    whitestripe.ind = 1:length.img 
+    whitestripe.ind = which(img > mean(img))
     err = TRUE
   }
   #ERROR IN WHITE STRIPE MEANS DO WHOLE-IMAGE NORMALIZATION
