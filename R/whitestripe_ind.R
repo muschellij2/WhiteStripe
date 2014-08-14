@@ -122,6 +122,8 @@ whitestripe = function(img, type=c("T1", "T2"), breaks=2000,
     mask.img = mask.img,
     mu.whitestripe = mu.whitestripe,
     sig.whitestripe = sig.whitestripe,
+    img.mode.q = img.mode.q,
+    whitestripe.width = whitestripe.width,
     err = err  ))
 }
 
