@@ -57,6 +57,7 @@ get.largest.mode <- function(x, y, verbose = TRUE,
 #' @param y values of counts from \code{\link{hist}}
 #' @param rare.prop Proportion used to remove rare intensity tail
 #' @param verbose print diagnostic output
+#' @param remove.tail Remove rare intensity tail
 #' @param ... arguments to be passed to \code{\link{smooth_hist}}
 #' @export
 #' @return Value of x that is the last peak
@@ -77,13 +78,15 @@ get.largest.mode <- function(x, y, verbose = TRUE,
 #' })
 #'  
 get.last.mode = function(x,y, 
-  rare.prop=1/5, verbose=TRUE, ...) {
+  rare.prop=1/5, verbose=TRUE, remove.tail = TRUE, ...) {
   
   
   #Remove rare intensity tail
-  which.rare <- y < (rare.prop*max(y))
-  y = y[!which.rare]
-  x = x[!which.rare]
+  if (remove.tail){
+    which.rare <- y < (rare.prop*max(y))
+    y = y[!which.rare]
+    x = x[!which.rare]
+  }
   
   if (verbose){
     cat("Smoothing Histogram\n")

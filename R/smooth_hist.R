@@ -14,6 +14,7 @@
 #' @return List of objects: x and y coordinates of histogram, coefficients from GAM, 
 #' fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials
 #' @examples 
+#' \dontrun{
 #' data(t2.voi)
 #' img.hist = hist(t2.voi, 
 #' breaks=2000, 
@@ -24,13 +25,14 @@
 #' y = y[!is.na(y)]
 #' # 70 used for speed of example
 #' s.hist = smooth_hist(x, y, k=70)
+#' }
 smooth_hist = function(x, y, 
                        deg = 4, 
                        k = floor(min(250,length(x)/2)), 
                        method = "REML", ...){
   
   stopifnot(deg > 0)
-
+#   print(paste0("Number of Knots: ", k))
   keep = which(y != -Inf)
   x = x[keep]
   y = y[keep]  
@@ -45,6 +47,7 @@ smooth_hist = function(x, y,
   D = list(length=1)
   D[[1]] = diag(c(rep(0, deg+1), rep(1, k)))
   
+#   print("Dimensions of D:", dim(D[[1]]))
   fit = gam(y~X-1, paraPen=list(X=D), method = method, ...)
   
   coefs = fit$coef

@@ -6,10 +6,16 @@
 #' @param na.rm Remove NAs from mean.  This is for double checking
 #' @export
 #' @return VOI of image.
-make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
+make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
+  if (inherits(img.voi, "img_voi")){
+    return(img.voi)
+  }
   img.voi = img[,,slices]  
   mn = mean(img, na.rm=na.rm)
   img.voi = img.voi[ img.voi > mn]
+  if (na.rm) img.voi = img.voi[!is.na(img.voi)]
+  class(img.voi) = "img_voi"
+  attr(img.voi, "slices") = slices
   return(img.voi)
 }
 
@@ -46,11 +52,11 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE){
 whitestripe = function(img, type=c("T1", "T2"), breaks=2000, 
                        whitestripe.width = 0.05, 
                        arr.ind= FALSE, verbose = TRUE, ...){
-  length.img = prod(dim(img))
+#   length.img = prod(dim(img))
   if (verbose){
     cat(paste0("Making ", type, " Image VOI\n"))
   }
-  img.voi = make_img_voi(img)
+  img.voi = make_img_voi(img, ...)
   if (verbose){
     cat(paste0("Making ", type, " Histogram\n"))
   }
@@ -89,7 +95,8 @@ whitestripe = function(img, type=c("T1", "T2"), breaks=2000,
   )
   err = FALSE
   if (length(whitestripe.ind)==0) {
-    warning(paste0("Length of White Stripe is 0 for ", type, ", doing whole brain"))
+    warning(paste0("Length of White Stripe is 0 for ", type, 
+                   ", using whole brain normalization"))
     whitestripe.ind = which(img > mean(img))
     err = TRUE
   }
@@ -151,7 +158,7 @@ whitestripe_norm = function(img, indices, ...){
 #' @keywords hybrid, whitestripe
 #' @seealso whitestripe
 #' @return List of indices of overlap mask, and overlap of class array or nifti
-#' @alias hybrid
+#' @aliases hybrid
 #' @examples 
 #' \dontrun{
 #' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
@@ -188,7 +195,9 @@ whitestripe_hybrid = function(t1, t2, ...){
 #' @keywords hybrid, whitestripe
 #' @seealso whitestripe, whitestripe_hybrid
 #' @return Class of array or nifti depending on img input
-#' @alias whitemask
+#' @aliases whitemask
+#' @import fslr
+#' @importFrom oro.nifti writeNIfTI
 #' @examples 
 #' \dontrun{
 #' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
@@ -212,60 +221,3 @@ whitestripe_ind_to_mask = function(img, indices, writeimg=FALSE, ...){
 }
 
 
-
-#' @title Set Max/Min for nifti object
-#' @return object of type nifti
-#' @param img nifti object
-#' @description Rescales image @cal_max and @cal_min to be the max and min,
-#' removing NA's, of the image
-#' @name cal_img
-#' @return Object of class nifti
-#' @export
-cal_img = function(img){
-  cmax = max(img, na.rm=TRUE) 
-  cmax = ifelse(is.finite(cmax), cmax, 0)
-  cmin = min(img, na.rm=TRUE) 
-  cmin = ifelse(is.finite(cmin), cmin, 0)  
-  img@cal_max = cmax
-  img@cal_min = cmin
-  return(img)
-}
-
-#' @title Change intercept to 0 and slope to 1
-#' @return object of type nifti
-#' @param img nifti object (or character of filename)
-#' @description Forces image @scl_slope to 1 nad and @scl_inter to be 0
-#' @name zero_trans
-#' @import oro.nifti
-#' @export
-zero_trans = function(img){
-  img = check_nifti(img)
-  img@scl_slope = 1
-  img@scl_inter = 0
-  return(img)
-}
-
-
-#' @title Check if nifti image or read in
-#' @import oro.nifti
-#' @description Simple check to see if input is character or of class nifti
-#' @return nifti object
-#' @seealso \link{readNIfTI}
-#' @param x character path of image or 
-#' an object of class nifti
-#' @param reorient (logical) passed to \code{\link{readNIfTI}} if the image
-#' is to be re-oriented
-#' @import oro.nifti
-#' @export
-check_nifti = function(x, reorient=FALSE){
-  if (inherits(x, "character")) {
-    img = readNIfTI(x, reorient=reorient)
-  } else {
-    if (inherits(x, "nifti")){
-      img = x
-    } else {
-      stop("x has unknown class - not char or nifti")
-    }
-  }
-  return(img)
-}

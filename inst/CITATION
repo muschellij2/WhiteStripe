@@ -1,0 +1,21 @@
+year <- 2013
+note <- sprintf("R package version %s", meta$Version)
+
+bibentry(bibtype = "Article",
+         title = "Normalization Techniques for Statistical Inference from Magnetic Resonance Imaging",
+         author = c(person("Russell T", "Shinohara"),
+                    person("Elizabeth M", "Sweeney"),
+                    person("Jeff", "Goldsmith"),
+                    person("Navid", "Shiee"),
+                    person("Farrah J", "Mateen"),
+                    person("Peter A", "Calabresi"),
+                    person("Samson", "Jarso"),
+                    person("Dzung L", "Pham"),
+                    person("Daniel S", "Reich"),
+                    person("Ciprian M", "Crainiceanu")
+                    ),
+         year = year,
+         note = note,
+         journal = "bepress",
+         url = "http://biostats.bepress.com/upennbiostat/art36/")
+
