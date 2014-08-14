@@ -11,6 +11,8 @@ make_img_voi(img, slices = 80:120, na.rm = TRUE, ...)
 \item{slices}{Slices to take for the image voi}
 
 \item{na.rm}{Remove NAs from mean.  This is for double checking}
+
+\item{...}{Arguments passed from other methods (not used)}
 }
 \value{
 VOI of image.

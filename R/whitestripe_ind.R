@@ -4,11 +4,12 @@
 #' @param img Image (T1 usually or T2).  Array or object of class nifti 
 #' @param slices Slices to take for the image voi
 #' @param na.rm Remove NAs from mean.  This is for double checking
+#' @param ... Arguments passed from other methods (not used)
 #' @export
 #' @return VOI of image.
 make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
-  if (inherits(img.voi, "img_voi")){
-    return(img.voi)
+  if (inherits(img, "img_voi")){
+    return(img)
   }
   img.voi = img[,,slices]  
   mn = mean(img, na.rm=na.rm)
