@@ -4,7 +4,9 @@
 \title{Performs White Stripe of T1 or T2 Images}
 \usage{
 whitestripe(img, type = c("T1", "T2"), breaks = 2000,
-  whitestripe.width = 0.05, arr.ind = FALSE, verbose = TRUE, ...)
+  whitestripe.width = 0.05, whitestripe.width.l = whitestripe.width,
+  whitestripe.width.u = whitestripe.width, arr.ind = FALSE,
+  verbose = TRUE, ...)
 }
 \arguments{
 \item{img}{Image (T1 or T2).  Array or object of class nifti}
@@ -14,6 +16,10 @@ whitestripe(img, type = c("T1", "T2"), breaks = 2000,
 \item{breaks}{Number of breaks passed to \code{\link{hist}}}
 
 \item{whitestripe.width}{Radius of the white stripe}
+
+\item{whitestripe.width.l}{Lower Radius of the white stripe}
+
+\item{whitestripe.width.u}{Upper Radius of the white stripe}
 
 \item{arr.ind}{Whether indices should be array notation or not,
 passed to \code{\link{which}}}

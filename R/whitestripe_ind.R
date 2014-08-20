@@ -29,6 +29,8 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @param type T1 or T2 image whitestripe
 #' @param breaks Number of breaks passed to \code{\link{hist}}
 #' @param whitestripe.width Radius of the white stripe
+#' @param whitestripe.width.l Lower Radius of the white stripe
+#' @param whitestripe.width.u Upper Radius of the white stripe
 #' @param arr.ind Whether indices should be array notation or not, 
 #' passed to \code{\link{which}}
 #' @param verbose Print diagnostic information
@@ -52,6 +54,8 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #'}
 whitestripe = function(img, type=c("T1", "T2"), breaks=2000, 
                        whitestripe.width = 0.05, 
+                       whitestripe.width.l = whitestripe.width, 
+                       whitestripe.width.u = whitestripe.width, 
                        arr.ind= FALSE, verbose = TRUE, ...){
 #   length.img = prod(dim(img))
   if (verbose){
@@ -86,8 +90,8 @@ whitestripe = function(img, type=c("T1", "T2"), breaks=2000,
   }    
   whitestripe = quantile(img.voi,
                          probs=c(
-                           max(img.mode.q - whitestripe.width,0),
-                           min(img.mode.q + whitestripe.width,1)
+                           max(img.mode.q - whitestripe.width.l,0),
+                           min(img.mode.q + whitestripe.width.u,1)
                          )
   )
   whitestripe.ind = which(
