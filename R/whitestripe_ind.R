@@ -52,7 +52,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' t2.mask[t2.mask == 0] = NA
 #' orthographic(t2, t2.mask, col.y="red")  
 #'}
-whitestripe = function(img, type=c("T1", "T2"), breaks=2000, 
+whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000, 
                        whitestripe.width = 0.05, 
                        whitestripe.width.l = whitestripe.width, 
                        whitestripe.width.u = whitestripe.width, 
@@ -78,10 +78,10 @@ whitestripe = function(img, type=c("T1", "T2"), breaks=2000,
   if (verbose){
     cat(paste0("Getting ", type, " Modes\n"))
   }  
-  if (type == "T1") {
+  if (type %in% c("T1", "last")) {
     img.mode = get.last.mode(x.in, y.in, ...)
   }
-  if (type == "T2"){
+  if (type %in% c("T1", "largest")){
     img.mode = get.largest.mode(x.in, y.in, ...) 
   }
   img.mode.q = mean(img.voi < img.mode)
