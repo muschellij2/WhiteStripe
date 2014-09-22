@@ -9,12 +9,14 @@
 #' @keywords datasets
 #' @examples
 #' \dontrun{
+#' if (download_img_data()){
 #' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
 #' t1.voi = make_img_voi(t1)
 #' any(is.na(t1.voi))
 #' # FALSE
 #' #save(t1.voi, file="data/t1.voi.rda", compress = TRUE,
 #' # compression_level=9)
+#' }
 #' } 
 NULL
 
@@ -29,12 +31,14 @@ NULL
 #' @keywords datasets
 #' @examples
 #' \dontrun{
+#' if (download_img_data()){
 #' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
 #' t2.voi = make_img_voi(t2)
 #' any(is.na(t2.voi))
 #' # FALSE 
 #' #save(t2.voi, file="data/t2.voi.rda", compress = TRUE,
 #' # compression_level=9) 
+#' }
 #' } 
 NULL
 

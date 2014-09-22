@@ -41,6 +41,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' mean of whitestripe, standard deviation of whitestripe
 #' @examples 
 #' \dontrun{
+#' if (download_img_data()){
 #' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
 #' t1.ind = whitestripe(t1, "T1")
 #' t1.mask = whitestripe_ind_to_mask(t1, t1.ind$whitestripe.ind)
@@ -51,6 +52,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' t2.mask = whitestripe_ind_to_mask(t2, t2.ind$whitestripe.ind)
 #' t2.mask[t2.mask == 0] = NA
 #' orthographic(t2, t2.mask, col.y="red")  
+#' }
 #'}
 whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000, 
                        whitestripe.width = 0.05, 
@@ -171,9 +173,11 @@ whitestripe_norm = function(img, indices, ...){
 #' @aliases hybrid
 #' @examples 
 #' \dontrun{
+#' if (download_img_data()){ 
 #' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
 #' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
 #' ind = whitestripe_hybrid(t1, t2)
+#' }
 #'}
 whitestripe_hybrid = function(t1, t2, ...){
   t1.ws = whitestripe(t1, type="T1", ...)
@@ -210,11 +214,13 @@ whitestripe_hybrid = function(t1, t2, ...){
 #' @importFrom oro.nifti writeNIfTI
 #' @examples 
 #' \dontrun{
+#' if (download_img_data()){ 
 #' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
 #' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
 #' ind = whitestripe_hybrid(t1, t2)
 #' mask = whitestripe_ind_to_mask(t1, ind$whitestripe.ind)
 #' orthographic(mask)
+#' }
 #' } 
 whitestripe_ind_to_mask = function(img, indices, writeimg=FALSE, ...){
   img[!is.na(img) | is.na(img)] = FALSE
