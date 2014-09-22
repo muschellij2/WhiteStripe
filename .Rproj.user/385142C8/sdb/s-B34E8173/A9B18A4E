@@ -1,0 +1,16 @@
+{
+    "contents" : "#' @title t1.voi\n#'\n#' @description VOI of T1 template image\n#' @name t1.voi\n#' @docType data\n#' @aliases t1.voi\n#' @usage t1.voi\n#' @format A volume of interest from a T1 image for smoothing\n#' @keywords datasets\n#' @examples\n#' \\dontrun{\n#' t1 = readNIfTI(system.file(\"T1Strip.nii.gz\", package=\"WhiteStripe\"))\n#' t1.voi = make_img_voi(t1)\n#' any(is.na(t1.voi))\n#' # FALSE\n#' #save(t1.voi, file=\"data/t1.voi.rda\", compress = TRUE,\n#' # compression_level=9)\n#' } \nNULL\n\n#' @title t2.voi\n#'\n#' @description VOI of T2 template image\n#' @name t2.voi\n#' @docType data\n#' @aliases t2.voi\n#' @usage t2.voi\n#' @format A volume of interest from a T2 image for smoothing\n#' @keywords datasets\n#' @examples\n#' \\dontrun{\n#' t2 = readNIfTI(system.file(\"T2Strip.nii.gz\", package=\"WhiteStripe\"))\n#' t2.voi = make_img_voi(t2)\n#' any(is.na(t2.voi))\n#' # FALSE \n#' #save(t2.voi, file=\"data/t2.voi.rda\", compress = TRUE,\n#' # compression_level=9) \n#' } \nNULL\n\n#' @title smoothed_histogram\n#'\n#' @description Smoothed histogram of image\n#' @name s.hist\n#' @docType data\n#' @aliases s.hist\n#' @usage s.hist\n#' @format A GAM from mgcv for x and y from histograms\n#' @keywords datasets\n#' @examples\n#' \\dontrun{ \n#' data(t2.voi)\n#' img.hist = hist(t2.voi, \n#' breaks=2000, \n#' plot=FALSE)\n#' y = img.hist$counts\n#' x = img.hist$mids\n#' x = x[!is.na(y)];\n#' y = y[!is.na(y)]\n#' # 70 used for speed of example\n#' s.hist = smooth_hist(x, y, k=70)\n#' }\nNULL\n\n#' @title midpoints of VOI histogram\n#'\n#' @description Points from VOI histogram\n#' @name xvals\n#' @docType data\n#' @aliases xvals\n#' @usage xvals\n#' @format x values from histogram for VOI\n#' @keywords datasets\nNULL\n",
+    "created" : 1402681241194.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2883943411",
+    "id" : "A9B18A4E",
+    "lastKnownWriteTime" : 1402685168,
+    "path" : "~/Dropbox/Packages/WhiteStripe/R/t1.voi.R",
+    "project_path" : "R/t1.voi.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

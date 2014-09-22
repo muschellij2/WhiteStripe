@@ -1,0 +1,17 @@
+{
+    "contents" : "#' @title Histogram smoothing for whitestripe\n#'\n#' @description Uses a generalized additive model (GAM) to smooth a \n#' histogram for whitestripe\n#' @param x values of midpoints from \\code{\\link{hist}}\n#' @param y values of counts from \\code{\\link{hist}}\n#' @param deg degree of polynomials used\n#' @param k Number of knots\n#' @param method Method for smoothing for GAM\n#' @param ... Arguments passed to \\code{\\link{gam}}\n#' @export\n#' @seealso gam\n#' @import mgcv \n#' @return List of objects: x and y coordinates of histogram, coefficients from GAM, \n#' fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials\n#' @examples \n#' \\dontrun{\n#' data(t2.voi)\n#' img.hist = hist(t2.voi, \n#' breaks=2000, \n#' plot=FALSE)\n#' y = img.hist$counts\n#' x = img.hist$mids\n#' x = x[!is.na(y)];\n#' y = y[!is.na(y)]\n#' # 70 used for speed of example\n#' s.hist = smooth_hist(x, y, k=70)\n#' }\nsmooth_hist = function(x, y, \n                       deg = 4, \n                       k = floor(min(250,length(x)/2)), \n                       method = \"REML\", ...){\n  \n  stopifnot(deg > 0)\n#   print(paste0(\"Number of Knots: \", k))\n  keep = which(y != -Inf)\n  x = x[keep]\n  y = y[keep]  \n  \n  qtiles <- seq(0, 1, length = k+2)[-c(1, k+2)]\n  knots <- quantile(x, qtiles)\n  phi = cbind(sapply(0:deg, function(k) (x^k) ), \n    sapply(knots, function(k) ((x - k > 0) * (x - k)^deg))\n    )\n  \n  X = phi\n  D = list(length=1)\n  D[[1]] = diag(c(rep(0, deg+1), rep(1, k)))\n  \n#   print(\"Dimensions of D:\", dim(D[[1]]))\n  fit = gam(y~X-1, paraPen=list(X=D), method = method, ...)\n  \n  coefs = fit$coef\n  fitted.vals = cbind(phi)%*%coefs\n  \n  ret = list(x, y, coefs, fitted.vals, fit, knots, deg)\n  names(ret) = c(\"x\", \"y\", \"coefs\", \"fitted.vals\", \"fit\", \"knots\", \"deg\")\n  return(ret)\n}\n\n\n\n#' @title Gets $n^{th}$ derivative of smoothed histogram\n#'\n#' @description This function outputs the nth derivative of a histogram smooth.\n#' @param x values from smooth_hist\n#' @param coefs Coefficients from GAM from smooth_hist\n#' @param knots Number of knots fit for GAM\n#' @param deg Degree of polynomials\n#' @param deriv.deg <what param does>\n#' @export\n#' @return Derivative of smoothed histogram\n#' @examples \n#' data(smoothed_histogram)\n#' dy<-get.deriv.smooth.hist(xvals, \n#' coefs=s.hist$coefs,\n#' knots=s.hist$knots,\n#' deg=s.hist$deg,\n#' deriv.deg=1)\nget.deriv.smooth.hist <- function(x,\n                                  coefs,\n                                  knots,\n                                  deg=4,\n                                  deriv.deg=1) {\n  stopifnot(deg > 0)\n  stopifnot(deriv.deg > 0)\n  deriv.coefs<-coefs[2:length(coefs)]*c(1:deg,rep(deg,length(knots)))\n  deriv.phi = cbind(\n    sapply(0:(deg-1), function(k) (x^k) ), \n    sapply(knots, function(k) ((x - k > 0) * (x - k)^(deg-1)))\n  )\n  if (deriv.deg>1) {\n    return(get.deriv.smooth.hist(x,coefs=deriv.coefs,deg=deg-1,knots=knots,deriv.deg=deriv.deg-1))\n  } else {\n    return(cbind(deriv.phi)%*%deriv.coefs)\n  }\n}",
+    "created" : 1402681725761.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1475403395",
+    "id" : "B3B0CBAE",
+    "lastKnownWriteTime" : 1403062265,
+    "path" : "~/Dropbox/Packages/WhiteStripe/R/smooth_hist.R",
+    "project_path" : "R/smooth_hist.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
