@@ -120,7 +120,7 @@ whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000,
   if (inherits(img, "nifti")){
     mask.img = cal_img(mask.img)
     mask.img = zero_trans(mask.img)
-  }  
+  } 
   
   return( list(
     whitestripe.ind = whitestripe.ind, 

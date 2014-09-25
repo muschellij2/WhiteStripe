@@ -15,3 +15,4 @@ Depends:
     oro.nifti,
     mgcv,
     fslr
+BugReports: https://github.com/muschellij2/WhiteStripe/issues
