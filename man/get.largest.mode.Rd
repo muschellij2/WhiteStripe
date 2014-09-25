@@ -30,8 +30,8 @@ y = img.hist$counts
 x = img.hist$mids
 x = x[!is.na(y)];
 y = y[!is.na(y)]
-# 70 used for speed of example
-nawm_peak = get.largest.mode(x, y, k=70)
+# 30 used for speed of example
+nawm_peak = get.largest.mode(x, y, k=30)
 hist(t2.voi, breaks=2000, border="red")
 abline(v=nawm_peak)
 })
