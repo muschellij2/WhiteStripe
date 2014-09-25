@@ -81,14 +81,14 @@ whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000,
     cat(paste0("Getting ", type, " Modes\n"))
   }  
   if (type %in% c("T1", "last")) {
-    img.mode = get.last.mode(x.in, y.in, ...)
+    img.mode = get.last.mode(x.in, y.in, verbose = verbose, ...)
   }
-  if (type %in% c("T1", "largest")){
-    img.mode = get.largest.mode(x.in, y.in, ...) 
+  if (type %in% c("T2", "largest")){
+    img.mode = get.largest.mode(x.in, y.in, verbose = verbose, ...) 
   }
   img.mode.q = mean(img.voi < img.mode)
   if (verbose){
-    cat("Quantile VOI\n")
+    cat(paste0("Quantile ", type, " VOI\n"))
   }    
   whitestripe = quantile(img.voi,
                          probs=c(
