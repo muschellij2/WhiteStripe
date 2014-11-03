@@ -33,8 +33,10 @@ y = t2.voi.hist$counts
 x = t2.voi.hist$mids
 x = x[!is.na(y)];
 y = y[!is.na(y)]
-# 70 used for speed of example
-s.hist = smooth_hist(x, y, k=70)
+# 30 used for speed of example
+s.hist = smooth_hist(x, y, k=30)
+plot(t2.voi.hist, border="red")
+lines(s.hist)
 }
 \seealso{
 gam
