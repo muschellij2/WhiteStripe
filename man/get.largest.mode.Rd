@@ -21,18 +21,15 @@ Value of x that is the largest peak
 This function grabs the largest peak of the histogram
 }
 \examples{
-data(t2.voi)
+data(t2.voi.hist)
 system.time({
-img.hist = hist(t2.voi,
-breaks=2000,
-plot=FALSE)
-y = img.hist$counts
-x = img.hist$mids
+y = t2.voi.hist$counts
+x = t2.voi.hist$mids
 x = x[!is.na(y)];
 y = y[!is.na(y)]
 # 30 used for speed of example
 nawm_peak = get.largest.mode(x, y, k=30)
-hist(t2.voi, breaks=2000, border="red")
+plot(t2.voi.hist, border="red")
 abline(v=nawm_peak)
 })
 }

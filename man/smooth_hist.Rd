@@ -28,18 +28,13 @@ Uses a generalized additive model (GAM) to smooth a
 histogram for whitestripe
 }
 \examples{
-\dontrun{
-data(t2.voi)
-img.hist = hist(t2.voi,
-breaks=2000,
-plot=FALSE)
-y = img.hist$counts
-x = img.hist$mids
+data(t2.voi.hist)
+y = t2.voi.hist$counts
+x = t2.voi.hist$mids
 x = x[!is.na(y)];
 y = y[!is.na(y)]
 # 70 used for speed of example
 s.hist = smooth_hist(x, y, k=70)
-}
 }
 \seealso{
 gam

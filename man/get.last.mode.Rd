@@ -26,18 +26,15 @@ Value of x that is the last peak
 This function grabs the last peak or shoulder.
 }
 \examples{
-data(t1.voi)
+data(t1.voi.hist)
 system.time({
-img.hist = hist(t1.voi,
-breaks=2000,
-plot=FALSE)
-y = img.hist$counts
-x = img.hist$mids
+y = t1.voi.hist$counts
+x = t1.voi.hist$mids
 x = x[!is.na(y)];
 y = y[!is.na(y)]
 # 20 used for speed of example
 nawm_peak = get.last.mode(x, y, k=20)
-hist(t1.voi, breaks=2000, border="red")
+plot(t1.voi.hist, border="red")
 abline(v=nawm_peak)
 })
 }
