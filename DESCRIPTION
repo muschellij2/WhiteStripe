@@ -11,7 +11,8 @@ Description: For intensity-based normalization of T1 and T2 images, we have
     template and uses histogram-based methods.
 License: GPL-2
 Depends:
-    R (>= 2.10),
+    R (>= 2.10)
+Imports:
     oro.nifti,
     mgcv,
     fslr
