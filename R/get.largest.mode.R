@@ -131,7 +131,7 @@ get.last.mode = function(x,y,
 #' x = x[!is.na(y)];
 #' y = y[!is.na(y)]
 #' # 20 used for speed of example
-#' nawm_peak = get.last.mode(x, y, k=20)
+#' nawm_peak = get.first.mode(x, y, k=20)
 #' plot(t1.voi.hist, border="red")
 #' abline(v=nawm_peak)
 #' })
