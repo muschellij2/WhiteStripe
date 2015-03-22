@@ -9,8 +9,8 @@
 #' @param method Method for smoothing for GAM
 #' @param ... Arguments passed to \code{\link{gam}}
 #' @export
-#' @seealso gam
-#' @import mgcv 
+#' @seealso \link[mgcv]{gam}
+#' @importFrom mgcv gam
 #' @return List of objects: x and y coordinates of histogram, coefficients from GAM, 
 #' fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials
 #' @examples 

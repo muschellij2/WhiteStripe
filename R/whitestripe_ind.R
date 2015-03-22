@@ -210,8 +210,9 @@ whitestripe_hybrid = function(t1, t2, ...){
 #' @seealso whitestripe, whitestripe_hybrid
 #' @return Class of array or nifti depending on img input
 #' @aliases whitemask
-#' @import fslr
 #' @importFrom oro.nifti writeNIfTI
+#' @importFrom oro.nifti cal_img
+#' @importFrom oro.nifti zero_trans
 #' @examples 
 #' \dontrun{
 #' if (download_img_data()){ 

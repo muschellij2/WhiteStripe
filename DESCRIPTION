@@ -1,8 +1,8 @@
 Package: WhiteStripe
 Type: Package
 Title: Whitestripe White Matter Normalization For Magnetic Resonance Images
-Version: 1.0
-Date: 2014-04-28
+Version: 1.1
+Date: 2015-05-22
 Author: Taki Shinohara, John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Whitestripe normalization from Shinohara et. al does
@@ -13,5 +13,6 @@ Description: Whitestripe normalization from Shinohara et. al does
         template and uses histogram-based methods.
 License: GPL-2
 Depends: R (>= 2.10)
-Imports: oro.nifti, mgcv, fslr
+Imports: oro.nifti, mgcv
+Suggests: fslr
 BugReports: https://github.com/muschellij2/WhiteStripe/issues

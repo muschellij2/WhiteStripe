@@ -6,7 +6,6 @@
 #' @param verbose print diagnostic output
 #' @param ... arguments to be passed to \code{\link{smooth_hist}}
 #' @export
-#' @import mgcv
 #' @return Value of x that is the largest peak
 #' @examples 
 #' data(t2.voi.hist)
