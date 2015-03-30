@@ -12,7 +12,7 @@ Description: Whitestripe normalization from Shinohara et. al does
         estimates on data that has been rigidly-registered to the MNI
         template and uses histogram-based methods.
 License: GPL-2
-Depends: R (>= 2.10)
-Imports: oro.nifti, mgcv, methods
+Depends: R (>= 2.10), methods
+Imports: oro.nifti, mgcv
 Suggests: fslr
 BugReports: https://github.com/muschellij2/WhiteStripe/issues
