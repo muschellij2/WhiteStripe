@@ -144,11 +144,15 @@ whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000,
 #' @description Taking the indices from white stripe to normalize the 
 #' intensity values of the brain
 #' @param img Array or object of class nifti
-#' @param indices Indices of white stripe from \code{\link{whitestripe}}
+#' @param indices Indices of white stripe from \code{\link{whitestripe}}. 
+#' Can also be a mask (indices where mask > 0 are used.)
 #' @param ... arguments to be passed to \code{\link{mean}} and \code{\link{sd}}
 #' @export
 #' @return Object of same class as img, but normalized
 whitestripe_norm = function(img, indices, ...){
+  if (inherits(indices, "nifti")){
+    indices = which(indices > 0)
+  }
   mu = mean(img[indices], ...)
   sig = sd(img[indices], ...)
   img = (img-mu)/sig

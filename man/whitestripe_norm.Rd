@@ -9,7 +9,8 @@ whitestripe_norm(img, indices, ...)
 \arguments{
 \item{img}{Array or object of class nifti}
 
-\item{indices}{Indices of white stripe from \code{\link{whitestripe}}}
+\item{indices}{Indices of white stripe from \code{\link{whitestripe}}.
+Can also be a mask (indices where mask > 0 are used.)}
 
 \item{...}{arguments to be passed to \code{\link{mean}} and \code{\link{sd}}}
 }

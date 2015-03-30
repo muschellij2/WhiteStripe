@@ -11,9 +11,9 @@ before_install:
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
 install:
-  - ./travis-tool.sh install_deps
   - ./travis-tool.sh install_github muschellij2/oro.nifti
   - ./travis-tool.sh install_github muschellij2/fslr
+  - ./travis-tool.sh install_deps
 script: ./travis-tool.sh run_tests
 
 after_failure:
