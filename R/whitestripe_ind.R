@@ -5,6 +5,7 @@
 #' @param slices Slices to take for the image voi
 #' @param na.rm Remove NAs from mean.  This is for double checking
 #' @param ... Arguments passed from other methods (not used)
+#' @import methods
 #' @export
 #' @return VOI of image.
 make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
