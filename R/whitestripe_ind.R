@@ -11,7 +11,8 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
   if (inherits(img, "img_voi")){
     return(img)
   }
-  img.voi = img[,,slices]  
+  img = as.array(img)
+  img.voi = img[,,slices]
   mn = mean(img, na.rm=na.rm)
   img.voi = img.voi[ img.voi > mn]
   if (na.rm) img.voi = img.voi[!is.na(img.voi)]
