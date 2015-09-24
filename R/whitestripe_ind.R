@@ -77,6 +77,9 @@ whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000,
   x.in = x.in[!is.na(y.in)];
   y.in = y.in[!is.na(y.in)]
   
+  x.in = x.in[!(y.in %in% 0)];
+  y.in = y.in[!(y.in %in% 0)]  
+  
   stopifnot(length(type) == 1)
   type = match.arg(type, choices = c("T1", "T2", "last", "largest"))
   if (verbose){

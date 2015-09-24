@@ -1,18 +1,20 @@
 Package: WhiteStripe
 Type: Package
-Title: Whitestripe White Matter Normalization For Magnetic Resonance Images
-Version: 1.1
+Title: White Matter Normalization for Magnetic Resonance Images using Whitestripe
+Version: 1.1.1
 Date: 2015-05-22
 Author: Taki Shinohara, John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
-Description: Whitestripe normalization from Shinohara et. al does
+Description: Shinohara et. al introduced Whitestripe, an 
         intensity-based normalization of T1 and T2 images, where normal
         appearing white matter performs well, but requires segmentation.
         This method performs white matter mean and standard deviation
         estimates on data that has been rigidly-registered to the MNI
         template and uses histogram-based methods.
-License: GPL-2
+License: GPL-3
 Depends: R (>= 2.10), methods
-Imports: oro.nifti, mgcv
+Imports: 
+  oro.nifti (>= 0.5.0),
+  mgcv
 Suggests: fslr
 BugReports: https://github.com/muschellij2/WhiteStripe/issues
