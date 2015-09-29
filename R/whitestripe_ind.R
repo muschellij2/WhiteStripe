@@ -138,7 +138,8 @@ whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000,
     whitestripe.width = whitestripe.width,
     whitestripe.width.l = whitestripe.width.l,
     whitestripe.width.u = whitestripe.width.u,
-    err = err  ))
+    err = err, 
+    img.hist = img.hist))
 }
 
 
