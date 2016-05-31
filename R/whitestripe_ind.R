@@ -9,12 +9,18 @@
 #' @export
 #' @return VOI of image.
 make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
-  if (inherits(img, "img_voi")){
+  if (inherits(img, "img_voi")) {
     return(img)
   }
-  img = as.array(img)
+  img = as(img, "array")
+  d3 = dim(img)[3]
+  d3 = seq(d3)
+  if (!all(slices %in% d3)) {
+    stop(paste0("Cannot subset image slices, please", 
+                " check slices and image dimensions!"))
+  }
   img.voi = img[,,slices]
-  mn = mean(img, na.rm=na.rm)
+  mn = mean(img, na.rm = na.rm)
   img.voi = img.voi[ img.voi > mn]
   if (na.rm) img.voi = img.voi[!is.na(img.voi)]
   class(img.voi) = "img_voi"
@@ -63,11 +69,11 @@ whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000,
                        arr.ind= FALSE, verbose = TRUE, ...){
 #   length.img = prod(dim(img))
   if (verbose){
-    cat(paste0("Making ", type, " Image VOI\n"))
+    message(paste0("Making ", type, " Image VOI\n"))
   }
   img.voi = make_img_voi(img, ...)
   if (verbose){
-    cat(paste0("Making ", type, " Histogram\n"))
+    message(paste0("Making ", type, " Histogram\n"))
   }
   img.hist = hist(img.voi, 
                   breaks=breaks, 
@@ -83,7 +89,7 @@ whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000,
   stopifnot(length(type) == 1)
   type = match.arg(type, choices = c("T1", "T2", "last", "largest"))
   if (verbose){
-    cat(paste0("Getting ", type, " Modes\n"))
+    message(paste0("Getting ", type, " Modes\n"))
   }  
   if (type %in% c("T1", "last")) {
     img.mode = get.last.mode(x.in, y.in, verbose = verbose, ...)
@@ -93,7 +99,7 @@ whitestripe = function(img, type=c("T1", "T2", "last", "largest"), breaks=2000,
   }
   img.mode.q = mean(img.voi < img.mode)
   if (verbose){
-    cat(paste0("Quantile ", type, " VOI\n"))
+    message(paste0("Quantile ", type, " VOI\n"))
   }    
   whitestripe = quantile(img.voi,
                          probs=c(

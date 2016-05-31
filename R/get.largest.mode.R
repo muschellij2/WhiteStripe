@@ -24,14 +24,14 @@ get.largest.mode <- function(x, y, verbose = TRUE,
   
   #estimate derivative
   if (verbose){
-    cat("Smoothing Histogram\n")
+    message("Smoothing Histogram\n")
   }
   system.time({
     smooth1 = smooth_hist(x, y, ...)
   })
   #estimate derivative
   if (verbose){
-    cat("Smoothing Derivative\n")
+    message("Smoothing Derivative\n")
   }  
   dy = get.deriv.smooth.hist(
     x,
@@ -82,7 +82,7 @@ get.last.mode = function(x,y,
   }
   
   if (verbose){
-    cat("Smoothing Histogram\n")
+    message("Smoothing Histogram\n")
   }  
   #estimate derivative
   system.time({
@@ -90,7 +90,7 @@ get.last.mode = function(x,y,
   })
   #estimate derivative
   if (verbose){
-    cat("Smoothing Derivative\n")
+    message("Smoothing Derivative\n")
   }    
   dy<-get.deriv.smooth.hist(x, 
     coefs=smooth1$coefs,
@@ -147,7 +147,7 @@ get.first.mode = function(x,y,
   }
   
   if (verbose){
-    cat("Smoothing Histogram\n")
+    message("Smoothing Histogram\n")
   }  
   #estimate derivative
   system.time({
@@ -155,7 +155,7 @@ get.first.mode = function(x,y,
   })
   #estimate derivative
   if (verbose){
-    cat("Smoothing Derivative\n")
+    message("Smoothing Derivative\n")
   }    
   dy<-get.deriv.smooth.hist(x, 
                             coefs=smooth1$coefs,
