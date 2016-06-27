@@ -42,6 +42,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @param arr.ind Whether indices should be array notation or not, 
 #' passed to \code{\link{which}}
 #' @param verbose Print diagnostic information
+#' @param stripped Applying to skull-stripped image
 #' @param ... Arguments to be passed to \code{\link{get.last.mode}}
 #' @export
 #' @return List of indices of whitestripe, last mode of histogram,

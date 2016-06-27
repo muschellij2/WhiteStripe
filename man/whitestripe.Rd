@@ -7,7 +7,7 @@
 whitestripe(img, type = c("T1", "T2", "last", "largest"), breaks = 2000,
   whitestripe.width = 0.05, whitestripe.width.l = whitestripe.width,
   whitestripe.width.u = whitestripe.width, arr.ind = FALSE,
-  verbose = TRUE, ...)
+  verbose = TRUE, stripped = FALSE, ...)
 }
 \arguments{
 \item{img}{Image (T1 or T2).  Array or object of class nifti}
@@ -26,6 +26,8 @@ whitestripe(img, type = c("T1", "T2", "last", "largest"), breaks = 2000,
 passed to \code{\link{which}}}
 
 \item{verbose}{Print diagnostic information}
+
+\item{stripped}{Applying to skull-stripped image}
 
 \item{...}{Arguments to be passed to \code{\link{get.last.mode}}}
 }
