@@ -49,6 +49,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @return List of indices of whitestripe, last mode of histogram,
 #' array/nifti of 0/1 corresponding to the mask,
 #' mean of whitestripe, standard deviation of whitestripe
+#' @import graphics stats utils
 #' @examples 
 #' \dontrun{
 #' if (download_img_data()){
