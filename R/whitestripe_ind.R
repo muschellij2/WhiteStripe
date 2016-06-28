@@ -22,7 +22,9 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
   img.voi = img[,,slices]
   mn = mean(img, na.rm = na.rm)
   img.voi = img.voi[ img.voi > mn]
-  if (na.rm) img.voi = img.voi[!is.na(img.voi)]
+  if (na.rm) {
+    img.voi = img.voi[!is.na(img.voi)]
+  }
   class(img.voi) = "img_voi"
   attr(img.voi, "slices") = slices
   return(img.voi)
