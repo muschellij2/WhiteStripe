@@ -7,7 +7,7 @@
 whitestripe(img, type = c("T1", "T2", "last", "largest"), breaks = 2000,
   whitestripe.width = 0.05, whitestripe.width.l = whitestripe.width,
   whitestripe.width.u = whitestripe.width, arr.ind = FALSE,
-  verbose = TRUE, ...)
+  verbose = TRUE, stripped = FALSE, ...)
 }
 \arguments{
 \item{img}{Image (T1 or T2).  Array or object of class nifti}
@@ -27,6 +27,9 @@ passed to \code{\link{which}}}
 
 \item{verbose}{Print diagnostic information}
 
+\item{stripped}{Applying to skull-stripped image. NOTE: This does NOT do a 
+subset of slices, as \code{\link{make_img_voi}}.}
+
 \item{...}{Arguments to be passed to \code{\link{get.last.mode}}}
 }
 \value{
@@ -37,6 +40,13 @@ mean of whitestripe, standard deviation of whitestripe
 \description{
 Returns the mean/sd of the whitestripe and indices
 for them on the image
+}
+\details{
+This function takes in an image and computes a window of the 
+distribution called the white stripe.  If you wish to pass in values you have
+subset, such as single from a skull-stripped image, you can pass in \code{img}
+and set the class to \code{img_voi} (\code{class(img) = "img_voi"}) and this 
+will not rerun \code{\link{make_img_voi}}.
 }
 \examples{
 \dontrun{
