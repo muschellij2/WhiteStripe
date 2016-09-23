@@ -26,5 +26,4 @@ Suggests:
     fslr (>= 2.0)
 BugReports: https://github.com/muschellij2/WhiteStripe/issues
 RoxygenNote: 5.0.1.9000
-Github_Packages: muschellij2/fslr,
-    muschellij2/oro.nifti
+Remotes: muschellij2/fslr,muschellij2/oro.nifti,muschellij2/neurobase
