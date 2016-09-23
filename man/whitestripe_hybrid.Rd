@@ -18,12 +18,12 @@ whitestripe_hybrid(t1, t2, ...)
 List of indices of overlap mask, and overlap of class array or nifti
 }
 \description{
-Uses t1 and t2 WhiteStripe to get an intersection of 
+Uses t1 and t2 WhiteStripe to get an intersection of
 the two masks for a hybrid approach
 }
 \examples{
 \dontrun{
-if (download_img_data()){ 
+if (download_img_data()){
 t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
 t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
 ind = whitestripe_hybrid(t1, t2)
