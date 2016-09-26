@@ -8,6 +8,9 @@ r_github_packages:
   - muschellij2/oro.nifti
   - muschellij2/fslr
 
+use_bioc: true
+bioc_required: true
+
 notifications:
   email:
     on_success: change
