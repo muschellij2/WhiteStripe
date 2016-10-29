@@ -75,7 +75,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @importFrom utils download.file
 #' @importFrom graphics hist
 whitestripe <- function(img,
-                      type = c("T1", "T2", "last", "largest"),
+                      type = c("T1", "T2", "last", "largest", "first"),
                       breaks = 2000, whitestripe.width = 0.05,
                       whitestripe.width.l = whitestripe.width,
                       whitestripe.width.u = whitestripe.width,
@@ -108,6 +108,10 @@ whitestripe <- function(img,
     }
     if (type %in% c("T2", "largest")) {
         img.mode = get.largest.mode(x.in, y.in, verbose = verbose,
+            ...)
+    }
+    if (type %in% c("first")) {
+        img.mode = get.first.mode(x.in, y.in, verbose = verbose,
             ...)
     }
     img.mode.q = mean(img.voi < img.mode)
