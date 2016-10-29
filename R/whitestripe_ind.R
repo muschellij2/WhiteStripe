@@ -36,7 +36,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @description Returns the mean/sd of the whitestripe and indices
 #' for them on the image
 #' @param img Image (T1 or T2).  Array or object of class nifti
-#' @param type T1 or T2 image whitestripe
+#' @param type T1, T2, FA, or MD image whitestripe
 #' @param breaks Number of breaks passed to \code{\link{hist}}
 #' @param whitestripe.width Radius of the white stripe
 #' @param whitestripe.width.l Lower Radius of the white stripe
@@ -75,7 +75,7 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @importFrom utils download.file
 #' @importFrom graphics hist
 whitestripe <- function(img,
-                      type = c("T1", "T2", "last", "largest"),
+                      type = c("T1", "T2", "FA", "MD", "first", "last", "largest"),
                       breaks = 2000, whitestripe.width = 0.05,
                       whitestripe.width.l = whitestripe.width,
                       whitestripe.width.u = whitestripe.width,
@@ -102,12 +102,16 @@ whitestripe <- function(img,
     if (verbose) {
         cat(paste0("Getting ", type, " Modes\n"))
     }
-    if (type %in% c("T1", "last")) {
+    if (type %in% c("T1", "FA","last")) {
         img.mode = get.last.mode(x.in, y.in, verbose = verbose,
             ...)
     }
     if (type %in% c("T2", "largest")) {
         img.mode = get.largest.mode(x.in, y.in, verbose = verbose,
+            ...)
+    }
+    if (type %in% c("MD", "first")) {
+        img.mode = get.first.mode(x.in, y.in, verbose = verbose,
             ...)
     }
     img.mode.q = mean(img.voi < img.mode)
