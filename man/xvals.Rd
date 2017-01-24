@@ -12,4 +12,3 @@ xvals
 Points from VOI histogram
 }
 \keyword{datasets}
-

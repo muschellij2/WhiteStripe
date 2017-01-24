@@ -40,4 +40,3 @@ abline(v=nawm_peak)
 })
  
 }
-

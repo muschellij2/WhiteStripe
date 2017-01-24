@@ -21,4 +21,3 @@ Object of same class as img, but normalized
 Taking the indices from white stripe to normalize the
 intensity values of the brain
 }
-

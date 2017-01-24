@@ -7,7 +7,7 @@
 whitestripe(img, type = c("T1", "T2", "last", "largest"), breaks = 2000,
   whitestripe.width = 0.05, whitestripe.width.l = whitestripe.width,
   whitestripe.width.u = whitestripe.width, arr.ind = FALSE,
-  verbose = TRUE, stripped = FALSE, ...)
+  verbose = TRUE, stripped = FALSE, slices = NULL, ...)
 }
 \arguments{
 \item{img}{Image (T1 or T2).  Array or object of class nifti}
@@ -64,4 +64,3 @@ orthographic(t2, t2.mask, col.y="red")
 }
 }
 }
-

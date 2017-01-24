@@ -74,31 +74,41 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @importFrom stats sd quantile
 #' @importFrom utils download.file
 #' @importFrom graphics hist
-whitestripe <- function(img,
-                      type = c("T1", "T2", "last", "largest"),
-                      breaks = 2000, whitestripe.width = 0.05,
-                      whitestripe.width.l = whitestripe.width,
-                      whitestripe.width.u = whitestripe.width,
-                      arr.ind = FALSE, verbose = TRUE,
-                      stripped = FALSE, ...)  {
+whitestripe <- function(
+  img,
+  type = c("T1", "T2", "last", "largest"),
+  breaks = 2000, whitestripe.width = 0.05,
+  whitestripe.width.l = whitestripe.width,
+  whitestripe.width.u = whitestripe.width,
+  arr.ind = FALSE, verbose = TRUE,
+  stripped = FALSE, slices = NULL, ...)  {
     if (verbose) {
-        cat(paste0("Making ", type, " Image VOI\n"))
+        message(paste0("Making Image VOI\n"))
     }
     if (stripped) {
-        img.voi<-img[img>0]
+        img.voi <- img[img > 0]
     } else {
-        img.voi<-make_img_voi(img, ...)
+      is_voi = inherits(img, "img_voi")
+      if (is.null(slices) & !is_voi) {
+        message(
+          paste0("Using all slices of the image as slices not defined!", 
+                 " Use stripped = TRUE if using skull-stripped images.")
+        )        
+        d3 = dim(as(img, "array"))[3]
+        slices = seq(d3)        
+      }
+      img.voi <- make_img_voi(img, slices = slices, ...)
     }
     if (verbose) {
-        cat(paste0("Making ", type, " Histogram\n"))
+        message(paste0("Making ", type, " Histogram\n"))
     }
     img.hist = hist(img.voi, breaks = breaks, plot = FALSE)
     y.in = img.hist$counts
     x.in = img.hist$mids
     x.in = x.in[!is.na(y.in)]
     y.in = y.in[!is.na(y.in)]
-    stopifnot(length(type) == 1)
     type = match.arg(type)
+    stopifnot(length(type) == 1)
     if (verbose) {
         cat(paste0("Getting ", type, " Modes\n"))
     }

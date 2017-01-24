@@ -42,4 +42,3 @@ lines(s.hist)
 \seealso{
 \link[mgcv]{gam}
 }
-

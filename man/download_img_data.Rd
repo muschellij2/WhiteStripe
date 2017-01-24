@@ -16,4 +16,3 @@ Logical indicator if the files were downloaded.
 \description{
 Download T1 and T2 data for Examples
 }
-

@@ -31,4 +31,3 @@ knots=s.hist$knots,
 deg=s.hist$deg,
 deriv.deg=1)
 }
-

@@ -23,4 +23,3 @@ s.hist = smooth_hist(x, y, k=70)
 }
 }
 \keyword{datasets}
-
