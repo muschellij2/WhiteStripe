@@ -46,6 +46,8 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @param verbose Print diagnostic information
 #' @param stripped Applying to skull-stripped image. NOTE: This does NOT do a
 #' subset of slices, as \code{\link{make_img_voi}}.
+#' @param slices slices to use for \code{\link{make_img_voi}} if only a subset to
+#' estimate the distribution.
 #' @param ... Arguments to be passed to \code{\link{get.last.mode}}
 #' @export
 #' @return List of indices of whitestripe, last mode of histogram,

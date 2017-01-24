@@ -30,6 +30,9 @@ passed to \code{\link{which}}}
 \item{stripped}{Applying to skull-stripped image. NOTE: This does NOT do a
 subset of slices, as \code{\link{make_img_voi}}.}
 
+\item{slices}{slices to use for \code{\link{make_img_voi}} if only a subset to
+estimate the distribution.}
+
 \item{...}{Arguments to be passed to \code{\link{get.last.mode}}}
 }
 \value{
