@@ -128,7 +128,7 @@ whitestripe <- function(
     }
     whitestripe = quantile(img.voi, probs = c(max(img.mode.q -
         whitestripe.width.l, 0), min(img.mode.q + whitestripe.width.u,
-        1)))
+        1)), na.rm = TRUE)
     whitestripe.ind = which((img > whitestripe[1]) & (img < whitestripe[2]),
         arr.ind = arr.ind)
     err = FALSE
