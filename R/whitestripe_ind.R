@@ -60,9 +60,15 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' will not rerun \code{\link{make_img_voi}}.
 #' @examples
 #' \dontrun{
-#' if (download_img_data()){
+#' library(WhiteStripe)
+#' if (WhiteStripe::download_img_data()){
+#' library(oro.nifti)
+#' set.seed(1)
 #' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
 #' t1.ind = whitestripe(t1, "T1")
+#' set.seed(2)
+#' t1_2 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+#' t1_2.ind = whitestripe(t1_2, "T1") 
 #' t1.mask = whitestripe_ind_to_mask(t1, t1.ind$whitestripe.ind)
 #' t1.mask[t1.mask == 0] = NA
 #' orthographic(t1, t1.mask, col.y="red")
