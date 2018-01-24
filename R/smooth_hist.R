@@ -12,7 +12,7 @@
 #' @seealso \link[mgcv]{gam}
 #' @importFrom mgcv gam
 #' @return List of objects: x and y coordinates of histogram, coefficients from GAM, 
-#' fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials
+#' fitted values from GAM, the GAM model, the knots fitted, and degrees of polynomials
 #' @examples 
 #' data(t2.voi.hist)
 #' y = t2.voi.hist$counts
@@ -64,7 +64,7 @@ smooth_hist = function(x, y,
 #' @param coefs Coefficients from GAM from smooth_hist
 #' @param knots Number of knots fit for GAM
 #' @param deg Degree of polynomials
-#' @param deriv.deg <what param does>
+#' @param deriv.deg The degree of the derivative.
 #' @export
 #' @return Derivative of smoothed histogram
 #' @examples 

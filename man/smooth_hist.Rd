@@ -22,7 +22,7 @@ smooth_hist(x, y, deg = 4, k = floor(min(250, length(x)/2)),
 }
 \value{
 List of objects: x and y coordinates of histogram, coefficients from GAM, 
-fitted values from GAM, the GAM model, the knots fittted, and degrees of polynomials
+fitted values from GAM, the GAM model, the knots fitted, and degrees of polynomials
 }
 \description{
 Uses a generalized additive model (GAM) to smooth a 

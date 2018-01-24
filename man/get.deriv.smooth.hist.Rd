@@ -15,7 +15,7 @@ get.deriv.smooth.hist(x, coefs, knots, deg = 4, deriv.deg = 1)
 
 \item{deg}{Degree of polynomials}
 
-\item{deriv.deg}{<what param does>}
+\item{deriv.deg}{The degree of the derivative.}
 }
 \value{
 Derivative of smoothed histogram
