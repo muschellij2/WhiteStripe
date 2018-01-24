@@ -2,16 +2,19 @@ library(hexSticker)
 library(desc)
 desc = desc::description$new()
 package = desc$get("Package")
-outline = "#3f8cb1"
-background = "#e6e7e8"
+# outline = "#0caa41"
+outline = "black"
+# background = "#0caa41"
+background = "dodgerblue2"
+p_color = "black"
 sticker("icon.png",	
         package = package,
         h_fill = background,
         h_color = outline, 
-        p_size = 6,
+        s_width = 0.2, 
         s_height = 0.4,
-        s_width = 0.4 * 2.2, 
         s_x = 1,
-        s_y = 0.9, 
         filename = "sticker.png")
 
+usethis::use_build_ignore(
+  c("icon.png", "sticker.R", "sticker.png"))

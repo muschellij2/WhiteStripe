@@ -2,8 +2,8 @@ Package: WhiteStripe
 Type: Package
 Title: White Matter Normalization for Magnetic Resonance Images using
     Whitestripe
-Version: 2.2.3
-Date: 2017-10-11
+Version: 2.3.0
+Date: 2018-01-24
 Author: R. Taki Shinohara, John Muschelli
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Shinohara et. al (2014) <DOI:10.1016/j.nicl.2014.08.008>

@@ -61,18 +61,22 @@ make_img_voi = function(img, slices = 80:120, na.rm = TRUE, ...){
 #' @examples
 #' \dontrun{
 #' library(WhiteStripe)
-#' if (WhiteStripe::download_img_data()){
+#' lib.loc = tempdir()
+#' if (WhiteStripe::download_img_data(lib.loc = lib.loc)){
 #' library(oro.nifti)
 #' set.seed(1)
-#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe",
+#' lib.loc = lib.loc))
 #' t1.ind = whitestripe(t1, "T1")
 #' set.seed(2)
-#' t1_2 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+#' t1_2 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe",
+#' lib.loc = lib.loc))
 #' t1_2.ind = whitestripe(t1_2, "T1") 
 #' t1.mask = whitestripe_ind_to_mask(t1, t1.ind$whitestripe.ind)
 #' t1.mask[t1.mask == 0] = NA
 #' orthographic(t1, t1.mask, col.y="red")
-#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
+#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe",
+#' lib.loc = lib.loc))
 #' t2.ind = whitestripe(t2, "T2")
 #' t2.mask = whitestripe_ind_to_mask(t2, t2.ind$whitestripe.ind)
 #' t2.mask[t2.mask == 0] = NA
@@ -201,9 +205,12 @@ whitestripe_norm = function(img, indices, ...){
 #' @aliases hybrid
 #' @examples
 #' \dontrun{
-#' if (download_img_data()){
-#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
-#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
+#' lib.loc = tempdir()
+#' if (download_img_data(lib.loc = lib.loc)){
+#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe", 
+#' lib.loc = lib.loc))
+#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe",
+#' lib.loc = lib.loc))
 #' ind = whitestripe_hybrid(t1, t2)
 #' }
 #'}
@@ -243,9 +250,13 @@ whitestripe_hybrid = function(t1, t2, ...){
 #' @importFrom oro.nifti zero_trans
 #' @examples
 #' \dontrun{
-#' if (download_img_data()){
-#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
-#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe"))
+#' lib.loc = tempdir()
+#' 
+#' if (download_img_data(lib.loc = lib.loc)){
+#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe",
+#' lib.loc = lib.loc))
+#' t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe",
+#' lib.loc = lib.loc))
 #' ind = whitestripe_hybrid(t1, t2)
 #' mask = whitestripe_ind_to_mask(t1, ind$whitestripe.ind)
 #' orthographic(mask)
