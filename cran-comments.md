@@ -7,5 +7,4 @@
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
-
+* This fix is for the installation to not write user directory for Debian.
