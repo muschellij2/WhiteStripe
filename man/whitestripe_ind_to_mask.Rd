@@ -18,7 +18,7 @@ indices were generated from}
 \item{...}{arguments to passed to \code{\link{writeNIfTI}} for writing image}
 }
 \value{
-Class of array or nifti depending on img input
+Class of array or nifti depending on \code{img} input
 }
 \description{
 Uses WhiteStripe indices to create image mask

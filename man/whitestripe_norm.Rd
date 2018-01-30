@@ -15,7 +15,7 @@ Can also be a mask (indices where mask > 0 are used.)}
 \item{...}{arguments to be passed to \code{\link{mean}} and \code{\link{sd}}}
 }
 \value{
-Object of same class as img, but normalized
+Object of same class as \code{img}, but normalized
 }
 \description{
 Taking the indices from white stripe to normalize the

@@ -176,7 +176,7 @@ whitestripe <- function(
 #' Can also be a mask (indices where mask > 0 are used.)
 #' @param ... arguments to be passed to \code{\link{mean}} and \code{\link{sd}}
 #' @export
-#' @return Object of same class as img, but normalized
+#' @return Object of same class as \code{img}, but normalized
 whitestripe_norm = function(img, indices, ...){
   if (inherits(indices, "nifti")){
     indices = which(indices > 0)
@@ -243,7 +243,7 @@ whitestripe_hybrid = function(t1, t2, ...){
 #' @export
 #' @keywords hybrid, whitestripe
 #' @seealso whitestripe, whitestripe_hybrid
-#' @return Class of array or nifti depending on img input
+#' @return Class of array or nifti depending on \code{img} input
 #' @aliases whitemask
 #' @importFrom oro.nifti writeNIfTI
 #' @importFrom oro.nifti cal_img
