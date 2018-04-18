@@ -15,16 +15,26 @@ First, we would like to make sure we have some data to work with.  The data is n
 
 To download the test data, we will use the WhiteStripe function `download_img_data`:
 
-```{r dl_data}
+```{r dl_data, eval = FALSE}
 library(WhiteStripe)
 download_img_data()
 ```
+```{r dl_data_run, echo = FALSE, eval = TRUE}
+lib.loc = tempdir() 
+library(WhiteStripe)
+download_img_data(lib.loc = lib.loc)
+```
+
 ## Getting the filenames
 
 Once the data is downloaded, we can access the files using the `ws_img_data` function:
 
-```{r get_data}
+```{r get_data, eval = FALSE}
 files = ws_img_data()
+```
+
+```{r get_data_run, echo = FALSE, eval = TRUE}
+files = ws_img_data(lib.loc = lib.loc)
 ```
 
 # Reading in the data

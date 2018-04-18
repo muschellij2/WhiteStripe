@@ -13,8 +13,10 @@ Histogram of VOI of T1 template image
 }
 \examples{
 \dontrun{
-if (download_img_data()){
-t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe"))
+lib.loc = tempdir() 
+if (download_img_data(lib.loc = lib.loc)){
+t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe",
+lib.loc = lib.loc))
 t1.voi = make_img_voi(t1)
 any(is.na(t1.voi))
 # FALSE
