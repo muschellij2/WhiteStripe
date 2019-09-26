@@ -1,0 +1,6 @@
+pandoc: '2.4'
+pkgdown: 1.4.0
+pkgdown_sha: ~
+articles:
+  Running_WhiteStripe: Running_WhiteStripe.html
+
