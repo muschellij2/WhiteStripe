@@ -1,10 +1,4 @@
-#' @title t1.voi.hist
-#'
-#' @description Histogram of VOI of T1 template image
-#' @name t1.voi.hist
-#' @docType data
-#' @aliases t1.voi.hist
-#' @usage t1.voi.hist
+#' Histogram of VOI of T1 template image
 #' @format A volume of interest histogram from a T1 image for smoothing
 #' @keywords datasets
 #' @examples
@@ -23,15 +17,10 @@
 #' # compression_level=9)
 #' }
 #' } 
-NULL
+"t1.voi.hist"
 
-#' @title t2.voi.hist
-#'
-#' @description Histogram of VOI of T2 template image
-#' @name t2.voi.hist
-#' @docType data
-#' @aliases t2.voi.hist
-#' @usage t2.voi.hist
+
+#' Histogram of VOI of T2 template image
 #' @format A histogram volume of interest from a T2 image for smoothing
 #' @keywords datasets
 #' @examples
@@ -50,15 +39,10 @@ NULL
 #' # compression_level=9) 
 #' }
 #' } 
-NULL
+"t2.voi.hist"
 
-#' @title smoothed_histogram
-#'
-#' @description Smoothed histogram of image
-#' @name s.hist
-#' @docType data
-#' @aliases s.hist
-#' @usage s.hist
+
+#' Smoothed histogram of image
 #' @format A GAM from mgcv for x and y from histograms
 #' @keywords datasets
 #' @examples
@@ -71,15 +55,11 @@ NULL
 #' # 70 used for speed of example
 #' s.hist = smooth_hist(x, y, k=70)
 #' }
-NULL
+"s.hist"
 
-#' @title midpoints of VOI histogram
-#'
-#' @description Points from VOI histogram
-#' @name xvals
-#' @docType data
-#' @aliases xvals
-#' @usage xvals
+
+#' Midpoints from VOI histogram
 #' @format x values from histogram for VOI
 #' @keywords datasets
-NULL
+"xvals"
+

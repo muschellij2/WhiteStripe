@@ -3,7 +3,7 @@
 \docType{data}
 \name{t2.voi.hist}
 \alias{t2.voi.hist}
-\title{t2.voi.hist}
+\title{Histogram of VOI of T2 template image}
 \format{A histogram volume of interest from a T2 image for smoothing}
 \usage{
 t2.voi.hist
