@@ -25,7 +25,9 @@ download_img_data = function(lib.loc = NULL){
   
   if (!all(file.exists(img_files))) {
     for (istub in stubs) {
-      url = paste0("http://muschellij2.github.io/WhiteStripe/", istub)
+      url = paste0("https://raw.githubusercontent.com/muschellij2/", 
+                   "WhiteStripe", "/gh-pages/", istub)
+      # url = paste0("http://muschellij2.github.io/WhiteStripe/", istub)
       urlfile <- file.path(system.file(package = "WhiteStripe",
                                        lib.loc = lib.loc), 
                          istub)
