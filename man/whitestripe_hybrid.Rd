@@ -36,5 +36,5 @@ ind = whitestripe_hybrid(t1, t2)
 \seealso{
 whitestripe
 }
-\keyword{hybrid,}
+\keyword{hybrid}
 \keyword{whitestripe}

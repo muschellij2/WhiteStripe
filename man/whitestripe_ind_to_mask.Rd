@@ -41,5 +41,5 @@ orthographic(mask)
 \seealso{
 whitestripe, whitestripe_hybrid
 }
-\keyword{hybrid,}
+\keyword{hybrid}
 \keyword{whitestripe}

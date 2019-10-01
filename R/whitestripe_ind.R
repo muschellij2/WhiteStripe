@@ -203,7 +203,7 @@ whitestripe_norm = function(img, indices, ...){
 #' @param t2 T2 image, array or class nifti
 #' @param ... arguments passed to \code{\link{whitestripe}}
 #' @export
-#' @keywords hybrid, whitestripe
+#' @keywords hybrid whitestripe
 #' @seealso whitestripe
 #' @return List of indices of overlap mask, and overlap of class array or nifti
 #' @aliases hybrid
@@ -245,7 +245,7 @@ whitestripe_hybrid = function(t1, t2, ...){
 #' @param writeimg logical to write image or not
 #' @param ... arguments to passed to \code{\link{writeNIfTI}} for writing image
 #' @export
-#' @keywords hybrid, whitestripe
+#' @keywords hybrid whitestripe
 #' @seealso whitestripe, whitestripe_hybrid
 #' @return Class of array or nifti depending on \code{img} input
 #' @aliases whitemask
