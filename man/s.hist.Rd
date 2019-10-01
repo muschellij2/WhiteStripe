@@ -4,7 +4,7 @@
 \name{s.hist}
 \alias{s.hist}
 \title{Smoothed histogram of image}
-\format{A GAM from mgcv for x and y from histograms}
+\format{A GAM from \code{mgcv} for x and y from histograms}
 \usage{
 s.hist
 }
