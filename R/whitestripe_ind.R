@@ -94,6 +94,10 @@ whitestripe <- function(
   whitestripe.width.u = whitestripe.width,
   arr.ind = FALSE, verbose = TRUE,
   stripped = FALSE, slices = NULL, ...)  {
+  
+  if (is.character(img)) {
+    img = check_nifti(img)
+  }
   if (verbose) {
     message(paste0("Making Image VOI\n"))
   }

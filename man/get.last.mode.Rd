@@ -4,8 +4,7 @@
 \alias{get.last.mode}
 \title{Get Last Peak}
 \usage{
-get.last.mode(x, y, rare.prop = 1/5, verbose = TRUE,
-  remove.tail = TRUE, ...)
+get.last.mode(x, y, rare.prop = 1/5, verbose = TRUE, remove.tail = TRUE, ...)
 }
 \arguments{
 \item{x}{values of midpoints from \code{\link{hist}}}

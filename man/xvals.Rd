@@ -4,7 +4,9 @@
 \name{xvals}
 \alias{xvals}
 \title{Midpoints from VOI histogram}
-\format{x values from histogram for VOI}
+\format{
+x values from histogram for VOI
+}
 \usage{
 xvals
 }

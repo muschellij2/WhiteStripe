@@ -4,8 +4,7 @@
 \alias{get.first.mode}
 \title{Get First Peak}
 \usage{
-get.first.mode(x, y, rare.prop = 1/5, verbose = TRUE,
-  remove.tail = TRUE, ...)
+get.first.mode(x, y, rare.prop = 1/5, verbose = TRUE, remove.tail = TRUE, ...)
 }
 \arguments{
 \item{x}{values of midpoints from \code{\link{hist}}}

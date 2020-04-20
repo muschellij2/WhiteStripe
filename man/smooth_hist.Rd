@@ -4,8 +4,14 @@
 \alias{smooth_hist}
 \title{Histogram smoothing for whitestripe}
 \usage{
-smooth_hist(x, y, deg = 4, k = floor(min(250, length(x)/2)),
-  method = "REML", ...)
+smooth_hist(
+  x,
+  y,
+  deg = 4,
+  k = floor(min(250, length(x)/2)),
+  method = "REML",
+  ...
+)
 }
 \arguments{
 \item{x}{values of midpoints from \code{\link{hist}}}

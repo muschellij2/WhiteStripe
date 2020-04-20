@@ -4,7 +4,9 @@
 \name{t1.voi.hist}
 \alias{t1.voi.hist}
 \title{Histogram of VOI of T1 template image}
-\format{A volume of interest histogram from a T1 image for smoothing}
+\format{
+A volume of interest histogram from a T1 image for smoothing
+}
 \usage{
 t1.voi.hist
 }
