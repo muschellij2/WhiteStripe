@@ -123,6 +123,13 @@ whitestripe <- function(
   x.in = img.hist$mids
   x.in = x.in[!is.na(y.in)]
   y.in = y.in[!is.na(y.in)]
+  if (min(abs(img.voi)) <= 1e-3 && stripped) {
+    warning(
+      paste0("Stripped data has very small, but > 0 values, 
+                   probably rounding needed, such as ",
+             "img[abs(img) <= 1e-3] = 0")
+    )
+  }
   type = match.arg(type)
   stopifnot(length(type) == 1)
   if (verbose) {
