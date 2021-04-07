@@ -1,3 +1,8 @@
+# WhiteStripe 2.4.0
+
+- Improved warnings with skull-stripped data.
+- Lazy Compression.
+
 # WhiteStripe 2.3.2
 
 - CRAN Release.
