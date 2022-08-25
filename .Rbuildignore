@@ -16,3 +16,4 @@ sticker\.png
 ^docs$
 ^pkgdown$
 ^CRAN-RELEASE$
+^CRAN-SUBMISSION$
