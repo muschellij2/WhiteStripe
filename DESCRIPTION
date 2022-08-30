@@ -1,7 +1,6 @@
 Package: WhiteStripe
 Type: Package
-Title: White Matter Normalization for Magnetic Resonance Images using
-    WhiteStripe
+Title: White Matter Normalization for Magnetic Resonance Images
 Version: 2.4.2
 Authors@R: c(
     person(given = "R. Taki",
