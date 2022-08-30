@@ -2,19 +2,17 @@
 #' @format A volume of interest histogram from a T1 image for smoothing
 #' @keywords datasets
 #' @examples
-#' \dontrun{
-#' lib.loc = tempdir() 
+#' \donttest{
+#' lib.loc = tempdir()
 #' if (download_img_data(lib.loc = lib.loc)){
-#' t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe",
-#' lib.loc = lib.loc))
-#' t1.voi = make_img_voi(t1)
-#' any(is.na(t1.voi))
-#' # FALSE
-#' t1.voi.hist = hist(t1.voi, 
-#' breaks=2000, 
-#' plot=FALSE) 
-#' #save(t1.voi.hist, file="data/t1.voi.hist.rda", compress = TRUE,
-#' # compression_level=9)
+#'   t1 = oro.nifti::readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe",
+#'                              lib.loc = lib.loc))
+#'   t1.voi = make_img_voi(t1)
+#'   any(is.na(t1.voi))
+#'   # FALSE
+#'   t1.voi.hist = hist(t1.voi,
+#'                      breaks=2000,
+#'                      plot=FALSE)
 #' }
 #' } 
 "t1.voi.hist"
