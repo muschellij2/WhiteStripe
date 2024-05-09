@@ -2,7 +2,7 @@
 % Please edit documentation in R/smooth_hist.R
 \name{get.deriv.smooth.hist}
 \alias{get.deriv.smooth.hist}
-\title{Gets $n^{th}$ derivative of smoothed histogram}
+\title{Gets nth derivative of smoothed histogram}
 \usage{
 get.deriv.smooth.hist(x, coefs, knots, deg = 4, deriv.deg = 1)
 }

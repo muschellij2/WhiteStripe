@@ -24,17 +24,18 @@ Class of array or nifti depending on \code{img} input
 Uses WhiteStripe indices to create image mask
 }
 \examples{
-\dontrun{
+\donttest{
 lib.loc = tempdir()
-
 if (download_img_data(lib.loc = lib.loc)){
-t1 = readNIfTI(system.file("T1Strip.nii.gz", package="WhiteStripe",
-lib.loc = lib.loc))
-t2 = readNIfTI(system.file("T2Strip.nii.gz", package="WhiteStripe",
-lib.loc = lib.loc))
-ind = whitestripe_hybrid(t1, t2)
-mask = whitestripe_ind_to_mask(t1, ind$whitestripe.ind)
-orthographic(mask)
+  t1 = oro.nifti::readNIfTI(system.file("T1Strip.nii.gz",
+                                        package="WhiteStripe",
+                                        lib.loc = lib.loc))
+  t2 = oro.nifti::readNIfTI(system.file("T2Strip.nii.gz",
+                                        package="WhiteStripe",
+                                        lib.loc = lib.loc))
+  ind = whitestripe_hybrid(t1, t2)
+  mask = whitestripe_ind_to_mask(t1, ind$whitestripe.ind)
+  oro.nifti::orthographic(mask)
 }
 }
 }

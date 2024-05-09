@@ -57,7 +57,7 @@ smooth_hist = function(x, y,
 
 
 
-#' @title Gets $n^{th}$ derivative of smoothed histogram
+#' @title Gets nth derivative of smoothed histogram
 #'
 #' @description This function outputs the nth derivative of a histogram smooth.
 #' @param x values from smooth_hist

@@ -17,3 +17,4 @@ sticker\.png
 ^pkgdown$
 ^CRAN-RELEASE$
 ^CRAN-SUBMISSION$
+^\.github$

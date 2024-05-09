@@ -1,5 +1,9 @@
 # WhiteStripe 2.4.1
 
+- Re-uploading to CRAN due to neurobase and other docs issues.
+
+# WhiteStripe 2.4.1
+
 - Re-uploading to CRAN due to neurobase.
 
 # WhiteStripe 2.4.0
