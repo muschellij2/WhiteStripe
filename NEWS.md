@@ -1,3 +1,7 @@
+# WhiteStripe 2.5.0
+
+- Docs fixes for links.
+
 # WhiteStripe 2.4.1
 
 - Re-uploading to CRAN due to neurobase and other docs issues.

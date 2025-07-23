@@ -14,9 +14,9 @@ smooth_hist(
 )
 }
 \arguments{
-\item{x}{values of midpoints from \code{\link{hist}}}
+\item{x}{values of midpoints from \code{\link[graphics]{hist}}}
 
-\item{y}{values of counts from \code{\link{hist}}}
+\item{y}{values of counts from \code{\link[graphics]{hist}}}
 
 \item{deg}{degree of polynomials used}
 
@@ -24,7 +24,7 @@ smooth_hist(
 
 \item{method}{Method for smoothing for GAM}
 
-\item{...}{Arguments passed to \code{\link{gam}}}
+\item{...}{Arguments passed to \code{\link[mgcv]{gam}}}
 }
 \value{
 List of objects: x and y coordinates of histogram, coefficients from GAM, 

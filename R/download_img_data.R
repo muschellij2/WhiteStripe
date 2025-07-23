@@ -2,7 +2,7 @@
 #' @description Download T1 and T2 data for Examples
 #' @return Logical indicator if the files were downloaded.
 #' @param lib.loc a character vector with path names of R libraries. 
-#' Passed to \code{\link{img_data}} 
+#' Passed to \code{\link{ws_img_data}} 
 #' @export
 download_img_data = function(lib.loc = NULL){
   stubs = c("T1Strip.nii.gz",

@@ -4,4 +4,4 @@
 
 * This is a new release.
 ---
-This fixes a minor note in the docs and was updated after `neurbase` was fixed.
+This fixes the docs for links.

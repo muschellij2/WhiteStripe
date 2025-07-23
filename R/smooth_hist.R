@@ -2,12 +2,12 @@
 #'
 #' @description Uses a generalized additive model (GAM) to smooth a 
 #' histogram for whitestripe
-#' @param x values of midpoints from \code{\link{hist}}
-#' @param y values of counts from \code{\link{hist}}
+#' @param x values of midpoints from \code{\link[graphics]{hist}}
+#' @param y values of counts from \code{\link[graphics]{hist}}
 #' @param deg degree of polynomials used
 #' @param k Number of knots
 #' @param method Method for smoothing for GAM
-#' @param ... Arguments passed to \code{\link{gam}}
+#' @param ... Arguments passed to \code{\link[mgcv]{gam}}
 #' @export
 #' @seealso \link[mgcv]{gam}
 #' @importFrom mgcv gam

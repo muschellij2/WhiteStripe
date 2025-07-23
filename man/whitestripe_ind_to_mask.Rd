@@ -15,7 +15,7 @@ indices were generated from}
 
 \item{writeimg}{logical to write image or not}
 
-\item{...}{arguments to passed to \code{\link{writeNIfTI}} for writing image}
+\item{...}{arguments to passed to \code{\link[oro.nifti]{writeNIfTI}} for writing image}
 }
 \value{
 Class of array or nifti depending on \code{img} input

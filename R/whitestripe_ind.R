@@ -254,7 +254,7 @@ whitestripe_hybrid = function(t1, t2, ...){
 #' indices were generated from
 #' @param indices indices from \code{\link{whitestripe}}
 #' @param writeimg logical to write image or not
-#' @param ... arguments to passed to \code{\link{writeNIfTI}} for writing image
+#' @param ... arguments to passed to \code{\link[oro.nifti]{writeNIfTI}} for writing image
 #' @export
 #' @keywords hybrid whitestripe
 #' @seealso whitestripe, whitestripe_hybrid

@@ -8,7 +8,7 @@ download_img_data(lib.loc = NULL)
 }
 \arguments{
 \item{lib.loc}{a character vector with path names of R libraries. 
-Passed to \code{\link{img_data}}}
+Passed to \code{\link{ws_img_data}}}
 }
 \value{
 Logical indicator if the files were downloaded.
